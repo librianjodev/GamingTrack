@@ -1,6 +1,6 @@
 # Projeto GamingTrack
 
-O projeto **GamingTrack** é um web site desenvolvido na disciplina de *Engenharia de Software 2* com o objetivo de construir, nos alunos envolvidos no projeto, o aprendizado de algumas técnicas da engenharia de software.
+O projeto **GamingTrack** será um web site desenvolvido na disciplina de *Engenharia de Software 2* com o objetivo de construir, nos alunos envolvidos no projeto, o aprendizado de algumas técnicas da engenharia de software.
 Neste site teremos uma espécie de rede social dedicada aos jogadores games eletrônicos que será dinâmica e de fácil integração com a API de alguns dos gerenciadores de games disponíveis no mercado.
 Nesse sentido, os jogadores terão acesso ao tempo de jogo e conquistas conseguidas em seus games favoritos reunidos em um só ambiente, facilitando, assim, o compartilhamento dessas conquistas com os amigos.
 Além disso, os jogadores poderão fazer resenha de jogos dando sua opinião, fazendo críticas ou elogios.
@@ -38,7 +38,7 @@ Espera-se que tenhamos uma a página web bem organizada e compatível com os div
 ### Banco de Dados
 
 Este projeto usará o banco de dados relacional - SQL. Com isso esperamos dados fortemente íntegros.
-Com essa finalidade, será usado o SGBD PostgreSQL, um poderoso gerenciador de banco de dados realcional que tem ampla credibilidade no mercado. Ele é portável em alguns sistemas operacionais como Windows, MacOS e diversas distribuções Linux, além disso, dá suporte ao mapeamento objeto-relacional - ORM (sigla em inglês), podendo ser usado para trabalhar com linguagens orientadas a objetos sem problemas.
+Com essa finalidade, será usado o SGBD PostgreSQL, um poderoso gerenciador de banco de dados relacional que tem ampla credibilidade no mercado. Ele é portável em alguns sistemas operacionais como Windows, MacOS e diversas distribuições Linux, além disso, dá suporte ao mapeamento objeto-relacional - ORM (sigla em inglês), podendo ser usado para trabalhar com linguagens orientadas a objetos sem problemas.
 
 ## Informações
 
