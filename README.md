@@ -1,8 +1,8 @@
 # Projeto GamingTrack
 
-O projeto **GamingTrack** será um web site desenvolvido na disciplina de *Engenharia de Software 2* com o objetivo de construir, nos alunos envolvidos no projeto, o aprendizado de algumas técnicas da engenharia de software.
-Neste site teremos uma espécie de rede social dedicada aos jogadores games eletrônicos que será dinâmica e de fácil integração com a API de alguns dos gerenciadores de games disponíveis no mercado.
-Nesse sentido, os jogadores terão acesso ao tempo de jogo e conquistas conseguidas em seus games favoritos reunidos em um só ambiente, facilitando, assim, o compartilhamento dessas conquistas com os amigos.
+O projeto **GamingTrack** será um web site desenvolvido na disciplina de *Engenharia de Software 2* com o objetivo de construir, nos alunos envolvidos no projeto, o aprendizado de algumas técnicas da engenharia de software.  
+Neste site teremos uma espécie de rede social dedicada aos jogadores games eletrônicos que será dinâmica e de fácil integração com a API de alguns dos gerenciadores de games disponíveis no mercado.  
+Nesse sentido, os jogadores terão acesso ao tempo de jogo e conquistas conseguidas em seus games favoritos reunidos em um só ambiente, facilitando, assim, o compartilhamento dessas conquistas com os amigos.  
 Além disso, os jogadores poderão fazer resenha de jogos dando sua opinião, fazendo críticas ou elogios.
 Os usuários poderão ver e comentar as resenhas dos outros jogadores.
 
@@ -10,9 +10,9 @@ Os usuários poderão ver e comentar as resenhas dos outros jogadores.
 
 ### Back-end
 
-O back-end do projeto será desenvolvido na linguagem de programação [Python](www.python.org/) e utilizando o [Framework Django REST](www.django-rest-framework.org/) que é uma variação do [Framework Django](www.djangoproject.com/).
+O back-end do projeto será desenvolvido na linguagem de programação [Python](www.python.org/) e utilizando o [Framework Django REST](www.django-rest-framework.org/) que é uma variação do [Framework Django](www.djangoproject.com/).  
 
-![Arquitetura de funcionamento do Framework Django REST](documentation/img/Django_REST.png)
+![Arquitetura de funcionamento do Framework Django REST](docs/img/Django_REST.png)
 
 * **Model**
 
@@ -37,17 +37,17 @@ Espera-se que tenhamos uma a página web bem organizada e compatível com os div
 
 ### Banco de Dados
 
-Este projeto usará o banco de dados relacional - SQL. Com isso esperamos dados fortemente íntegros.
+Este projeto usará o banco de dados relacional - SQL. Com isso esperamos dados fortemente íntegros.  
 Com essa finalidade, será usado o SGBD PostgreSQL, um poderoso gerenciador de banco de dados relacional que tem ampla credibilidade no mercado. Ele é portável em alguns sistemas operacionais como Windows, MacOS e diversas distribuições Linux, além disso, dá suporte ao mapeamento objeto-relacional - ORM (sigla em inglês), podendo ser usado para trabalhar com linguagens orientadas a objetos sem problemas.
 
 ## Informações
 
-* Descrição das Tarefas - [Plano de Iteração e Release](documentation/release.md)
-* Perspectivas do projeto - [Documento de Visão](documentation/doc-visao.md)
-* Descrição do [Modelo de Dados](documentation/modelo_dados.md)
+* Descrição das Tarefas - [Plano de Iteração e Release](docs/release.md)
+* Perspectivas do projeto - [Documento de Visão](docs/doc-visao.md)
+* Descrição do [Modelo de Dados](docs/modelo_dados.md)
 
 ## Links Úteis
 
-Principal tutorial utilizado <www.youtube.com/watch?v=f1R_bykXHGE>
-Tutorial do framework Django Rest <www.django-rest-framework.org/tutorial/quickstart/>
-Página sobre Django <tutorial.djangogirls.org/pt/>
+Principal tutorial utilizado <www.youtube.com/watch?v=f1R_bykXHGE>  
+Tutorial do framework Django Rest <www.django-rest-framework.org/tutorial/quickstart>  
+Página sobre Django <https://tutorial.djangogirls.org/pt>  
