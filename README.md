@@ -12,7 +12,7 @@ Os usuários poderão ver e comentar as resenhas dos outros jogadores.
 
 O back-end do projeto será desenvolvido na linguagem de programação [Python](www.python.org/) e utilizando o [Framework Django REST](www.django-rest-framework.org/) que é uma variação do [Framework Django](www.djangoproject.com/).
 
-![Arquitetura de funcionamento do Framework Django REST](documentation/img/Django_REST.png)
+![Arquitetura de funcionamento do Framework Django REST](docs/img/Django_REST.png)
 
 * **Model**
 
@@ -42,9 +42,9 @@ Com essa finalidade, será usado o SGBD PostgreSQL, um poderoso gerenciador de b
 
 ## Informações
 
-* Descrição das Tarefas - [Plano de Iteração e Release](documentation/release.md)
-* Perspectivas do projeto - [Documento de Visão](documentation/doc-visao.md)
-* Descrição do [Modelo de Dados](documentation/modelo_dados.md)
+* Descrição das Tarefas - [Plano de Iteração e Release](docs/release.md)
+* Perspectivas do projeto - [Documento de Visão](docs/doc-visao.md)
+* Descrição do [Modelo de Dados](docs/modelo_dados.md)
 
 ## Links Úteis
 
