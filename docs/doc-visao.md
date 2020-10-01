@@ -54,6 +54,11 @@ Data | Risco | Prioridade | Responsável | Status | Providência/Solução |
 ------ | ------ | ------ | ------ | ------ | ------ |
 15/10/2020 | Não aprendizado das ferramentas utilizadas pelos componentes do grupo | Alta | Todos | Vigente | Reforçar estudos sobre as ferramentas e aulas com a integrante que conhece a ferramenta |
 15/10/2020 | Divisão de tarefas mal sucedida | Baixa | Gerente | Vigente | Acompanhar de perto o desenvolvimento de cada membro da equipe |
-01/10/2020 | Implementação de protótipo com as tecnologias | Alto | Todos | Resolvido | Encontrar tutorial com a maioria da tecnologia e implementar um caso base do sistema |
+01/11/2020 | Implementação de protótipo com as tecnologias | Alto | Todos | Resolvido | Encontrar tutorial com a maioria da tecnologia e implementar um caso base do sistema |
 
 ### Referências
+
+Documentação da SteamAPI. Disponível em: https://developer.valvesoftware.com/wiki/Steam_Web_API
+Documentação da API IGDB. Disponível em: https://api-docs.igdb.com/#about
+Modelo de Documento de Visão do BSI. Disponível em: https://docs.google.com/document/d/1DPBcyGHgflmz5RDsZQ2X8KVBPoEF5PdAz9BBNFyLa6A/edit
+Modelo de Documento de Modelos do BSI. Disponível em: https://docs.google.com/document/d/1cddfSCpBtTjmDLxsFND9BM6m9hQZSTPAwHrNYXif98/edit
