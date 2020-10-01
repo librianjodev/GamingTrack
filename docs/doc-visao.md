@@ -1,7 +1,7 @@
 # Documento de Visão
 
 Documento de Visão do projeto GamingTrack, construído a partir do **Modelo BSI - Doc 001 - Documento de Visão** que pode ser encontrado no
-link: https://docs.google.com/document/d/1DPBcyGHgflmz5RDsZQ2X8KVBPoEF5PdAz9BBNFyLa6A/edit?usp=sharing
+link: <https://docs.google.com/document/d/1DPBcyGHgflmz5RDsZQ2X8KVBPoEF5PdAz9BBNFyLa6A/edit?usp=sharing>
 
 ## Equipe e Definição de Papéis
 
@@ -58,7 +58,7 @@ Data | Risco | Prioridade | Responsável | Status | Providência/Solução |
 
 ### Referências
 
-Documentação da SteamAPI. Disponível em: https://developer.valvesoftware.com/wiki/Steam_Web_API
-Documentação da API IGDB. Disponível em: https://api-docs.igdb.com/#about
-Modelo de Documento de Visão do BSI. Disponível em: https://docs.google.com/document/d/1DPBcyGHgflmz5RDsZQ2X8KVBPoEF5PdAz9BBNFyLa6A/edit
-Modelo de Documento de Modelos do BSI. Disponível em: https://docs.google.com/document/d/1cddfSCpBtTjmDLxsFND9BM6m9hQZSTPAwHrNYXif98/edit
+Documentação da SteamAPI. Disponível em: <https://developer.valvesoftware.com/wiki/Steam_Web_API>
+Documentação da API IGDB. Disponível em: <https://api-docs.igdb.com/#about>
+Modelo de Documento de Visão do BSI. Disponível em: <https://docs.google.com/document/d/1DPBcyGHgflmz5RDsZQ2X8KVBPoEF5PdAz9BBNFyLa6A/edit>
+Modelo de Documento de Modelos do BSI. Disponível em: <https://docs.google.com/document/d/1cddfSCpBtTjmDLxsFND9BM6m9hQZSTPAwHrNYXif98/edit>
