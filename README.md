@@ -40,6 +40,28 @@ Espera-se que tenhamos uma a página web bem organizada e compatível com os div
 Este projeto usará o banco de dados relacional - SQL. Com isso esperamos dados fortemente íntegros.  
 Com essa finalidade, será usado o SGBD PostgreSQL, um poderoso gerenciador de banco de dados relacional que tem ampla credibilidade no mercado. Ele é portável em alguns sistemas operacionais como Windows, MacOS e diversas distribuições Linux, além disso, dá suporte ao mapeamento objeto-relacional - ORM (sigla em inglês), podendo ser usado para trabalhar com linguagens orientadas a objetos sem problemas.
 
+    ### Criando usuario
+    1) acesse o postgres pela powershell 
+        psql -U postgres
+
+    2)use o comando abaixo para criar o usuario do banco de dados
+        create user gamer;
+
+    3)sete a senha no comando abaixo: 
+        alter user gamer password 'principal';
+        NOTA: esse comando é o mesmo usado para mudar a senha
+        NOTA: caso a senha seja alterada, ir em settings.py e alterá-la no database
+
+    4)em seguida, garanta que ele tenha acesso ao banco de dados (que já deve ter sido criado)
+        grant all on database "GamingTrack" to gamer;
+
+    5) está criado, basta escrever "exit" e sair do postgres ou fechar a powershell
+
+    DICA: Use o comando abaixo para logar com o usuario criado:
+        psql -U gamer "GamingTrack"
+
+        gamer seria o usuário e "GamingTrack" o banco de dados, que está entre aspas devido ao fato de que caso não estivesse, o postgres iria colocar todo o nome em minúsculo.
+
 ## Informações
 
 * Descrição das Tarefas - [Plano de Iteração e Release](docs/release.md)
