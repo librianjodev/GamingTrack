@@ -1,0 +1,13 @@
+
+{% block title %} Create New User {% endblock %}
+
+{% block content %}
+Create Page
+<form method="post" accept="/Register/">
+    {{form.as_p}} 
+    <!--form.as_table - Mostra um item logo em seguida do próximo-->
+    <!--form.as_p - Vai mostrar cada item como se desse um \n-->
+    <!--form.as_ul - Vai mostrar como uma lista de itens-->
+    <button type="submit", name="save">Register</button>
+</form>
+{% endblock %}
