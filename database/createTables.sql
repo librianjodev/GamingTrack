@@ -24,15 +24,15 @@ BEGIN
 
     UPDATE public."user"
 	SET "creationDate"=LOCALTIMESTAMP
-	WHERE new.id="user.id";
+	WHERE new.id="user".id;
 
     RETURN NEW;
 
 END;
 $$;
-
+--/*
 CREATE TRIGGER adicionarDataCadastroUser
 AFTER INSERT 
 ON "user"
 FOR EACH ROW
-EXECUTE PROCEDURE "inserirDataCadastro"();
+EXECUTE PROCEDURE "inserirDataCadastro"();--*/

@@ -17,7 +17,7 @@ def registerUser(response):
             p1 = form.cleaned_data["password1"]
             if p != p1:
                 return JsonResponse(data = {"message": "Erro: Senhas diferentes"})
-            if User.objects.filter(email=em).count() == 0:
+            if User.objects.filter(login=lo).count() == 0:
                 User.objects.create(email=em, login=lo, password=p, nome=n)
                 return HttpResponseRedirect("/") # redireciona para a página inicial do projeto
             else:
