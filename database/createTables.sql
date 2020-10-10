@@ -1,4 +1,4 @@
-CREATE SEQUENCE public."id_user"
+CREATE SEQUENCE IF NOT EXISTS public."id_user"
     INCREMENT 1;
 
 CREATE TABLE IF NOT EXISTS public."User"
@@ -9,8 +9,30 @@ CREATE TABLE IF NOT EXISTS public."User"
     email text NOT NULL,
     password text NOT NULL,
     login text NOT NULL,
-    "creationDate" timestamp with time zone DEFAULT (LOCALTIMESTAMP),
+    "creationDate" timestamp with time zone,
     "lastLogin" timestamp with time zone,
     "permissionLevel" integer,
     PRIMARY KEY (id)
 );
+
+CREATE OR REPLACE FUNCTION "inserirDataCadastro"()
+    RETURNS TRIGGER
+    LANGUAGE 'plpgsql'
+    AS $$
+
+BEGIN
+
+    UPDATE public."user"
+	SET "creationDate"=LOCALTIMESTAMP
+	WHERE new.id="user.id";
+
+    RETURN NEW;
+
+END;
+$$;
+
+CREATE TRIGGER adicionarDataCadastroUser
+AFTER INSERT 
+ON "user"
+FOR EACH ROW
+EXECUTE PROCEDURE "inserirDataCadastro"();
