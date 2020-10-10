@@ -1,0 +1,31 @@
+
+{% block title %}  {% endblock %}
+
+{% block content %}
+
+<table>
+    <thead>
+        <th>nome</th>
+        <th>foto</th>
+        <th>email</th>
+        <th>Data de criação</th>
+        <th>Último Login</th>
+    </thead>
+    <tr>
+        <th>{{user.nome}}</th>
+        <th>{{user.photo}}</th>
+        <th>{{user.email}}</th>
+        <th>{{user.creationdate}}</th>
+        <th>{{user.lastlogin}}</th>
+    </tr>
+
+    <tr>
+        <button onclick="location.href = '/GamingTrack/changeName'">Alterar nome</button>
+        <button onclick="location.href = '/GamingTrack/changeEmail'">Alterar email</button>
+        <!--<button onclick="location.href = '/GamingTrack/changePhoto'">Alterar foto</button>-->
+        <button onclick="location.href = '/GamingTrack/changePass'">Alterar senha</button>
+    </tr>
+
+</table>
+
+{% endblock %}
