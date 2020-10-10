@@ -101,4 +101,20 @@ def alterarLoginUser(response):
         form = changeUserEmailForm()
         return render(response, "user/alterar.html", {"form":form})
 
+def deletarUser(response):
+    sla = User.objects.get(id = response.session['id_user'])
+    if response.method == "POST":
+        form = changeUserEmailForm(response.POST)
 
+        if form.is_valid():
+            em = form.cleaned_data["email"]
+            p = form.cleaned_data["password"]
+            if (sla.password == p) and (sla.email == em):
+                sla.delete()
+                form = loginUserForm()
+                return render(response, "user/login.html", {"form":form})
+            else:
+                return JsonResponse(data = {"message": "Algo de errado não está certo"})
+    else:
+        form = changeUserEmailForm()
+        return render(response, "user/alterar.html", {"form":form})

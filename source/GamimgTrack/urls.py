@@ -7,4 +7,5 @@ urlpatterns = [
     path('changePass/', views.alterarSenhaUser), 
     path('changeName/', views.alterarLoginUser), 
     path('changeEmail/', views.alterarNomeUser), 
+    path('deleteUser/', views.deletarUser), 
 ]
