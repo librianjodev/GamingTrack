@@ -1,7 +1,7 @@
 CREATE SEQUENCE public."id_user"
     INCREMENT 1;
 
-CREATE TABLE IF NOT EXISTS public."user"
+CREATE TABLE IF NOT EXISTS public."User"
 (
     id integer NOT NULL DEFAULT nextval('id_user'),
     nome text,

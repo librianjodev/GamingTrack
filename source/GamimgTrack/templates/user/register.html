@@ -4,6 +4,9 @@
 {% block content %}
 Create Page
 <form method="post" accept="/Register/">
+    {% csrf_token %}
+    <!-- Necessário sempre que usar um form -->
+    
     {{form.as_p}} 
     <!--form.as_table - Mostra um item logo em seguida do próximo-->
     <!--form.as_p - Vai mostrar cada item como se desse um \n-->
