@@ -1,0 +1,14 @@
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+Create Page
+<form method="post" >
+    {% csrf_token %}
+    <!-- Necessário sempre que usar um form -->
+    
+    {{form.as_p}} 
+    <button type="submit", name="save">login</button>
+    <button onclick="location.href = '/GamingTrack/register'">Registrar</button>
+</form>
+{% endblock %}
