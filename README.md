@@ -67,6 +67,7 @@ Com essa finalidade, será usado o SGBD PostgreSQL, um poderoso gerenciador de b
 * Descrição das Tarefas - [Plano de Iteração e Release](docs/release.md)
 * Perspectivas do projeto - [Documento de Visão](docs/doc-visao.md)
 * Descrição do [Modelo de Dados](docs/modelo_dados.md)
+* Documento de [User Stories](docs/user_story.md)
 
 ## Links Úteis
 
