@@ -13,7 +13,7 @@ O presente documento tem como finalidade descrever como serão as interações d
 |                    |      |
 | ------------------ | ---- |
 |**Descrição**| O sistema deve manter um cadastro de usuário que tem acesso ao via login e senha. <p> Um usuário tem os atributos name, id, email, username, password. O email será o login e ele pode registrar-se diretamente no sistema. Além disso o usuário poderá alterar alguns dados, como o e-mail ou a senha. |
-|**Requisitos envolvidos**| RF01, RF02, RF03, RF04 |
+|**Requisitos envolvidos**| RF001, RF002, RF003, RF004 |
 |**Prioridade**| Essencial |
 |**Estimativa**| -- |
 |**Tempo Gasto (real):**| 10h |
@@ -33,7 +33,7 @@ O presente documento tem como finalidade descrever como serão as interações d
 |                    |      |
 | ------------------ | ---- |
 |**Descrição**| O sistema deve permitir que usuários comuns virem usuários moderadores mediante promoção por um administrador, também será possível remover a permissão de moderador.<p> Para isso, algum adminitrador deve ser criado no banco de dados e este dará as primeiras permissões |
-|**Requisitos envolvidos**| RF05, RF06 |
+|**Requisitos envolvidos**| RF005, RF006 |
 |**Prioridade**| Importante |
 |**Estimativa**| -- |
 |**Tempo Gasto (real):**| -- |
@@ -47,6 +47,26 @@ O presente documento tem como finalidade descrever como serão as interações d
 |**TA01.02**| |
 |**TA01.03**| |
 |**TA01.04**| |
+
+### User Story US03 - Permitir a Publicação de Postagens
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema deve permitir que um usuário cadastrado possa fazer publicações de comentários escritos, fotos, vídeos uma mistura de quaisquer desses. |
+|**Requisitos envolvidos**| RF009 |
+|**Prioridade**| Essencial |
+|**Estimativa**| -- |
+|**Tempo Gasto (real):**| -- |
+|**Tamanho Funcional**| -- |
+
+### **Testes de Aceitação (TA03)**
+
+| Código | Descrição |
+| ------ | --------- |
+|**TA03.01**| |
+|**TA03.02**| |
+|**TA03.03**| |
+|**TA03.04**| |
 
 ### Histórico de Revisões do Modelo
 

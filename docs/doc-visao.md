@@ -40,7 +40,7 @@ Usuário       | Usuário comum que possui acesso ao cadastro no site e possui p
 | Requisito | Descrição   | Ator |
 | --------- | ----------- | :--: |
 | RF001 - Realizar o autocadastro para utilizar o sistema. | O usuário poderá se autocadastrar para utilizar o sistema. | Usuário |
-| RF002 - Fazeer auto-atualização de seus dados | O usuário poderá atualizar seus prórpios dados| Usuário |
+| RF002 - Fazer auto-atualização de seus dados | O usuário poderá atualizar seus prórpios dados| Usuário |
 | RF003 - Auto-apagar conta | O usuário poderá se apagar do sistema | Usuário |
 | RF004 - Visualizar seus dados | O usuário poderá visualizar seus dados retidos pelo sistema, incluindo dados do último acessos | Usuário |
 | RF005 - Atribuir permissão de *moderador*| O usuário poderá ser promovido a *moderador* | Administrador - Moderado |
