@@ -60,7 +60,7 @@ O gerente deve enviar nesta tarefa o link do repositório e o link dos dois docu
 
 ### T02 - Iteração 2 - Inicialização
 
-A Iteração 2 começou dia 01/10/2020 e vai até --/--/2020. As atividades dessa tarefa são:
+A Iteração 2 começou dia 01/10/2020 e vai até 14/10/2020. As atividades dessa tarefa são:
 
 * Atualização do **Documento de Visão**, pode adicionar requisitos funcionais, se necessário;
 * Atualização do **Documento Lista de User Stories** com a lista de User Stories, pode adicionar *User Stories* se necessário. coloque no diretório "docs" do repositório;
