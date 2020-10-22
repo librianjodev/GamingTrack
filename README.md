@@ -20,7 +20,7 @@ A model é a representação dos objetos, permitindo obter informações do banc
 
 * **View**
 
-A view controla o fluxo de informações entre a model e o template. Essa camada utiliza lógica programada para decidir quais informações serão extraídas do banco de dados e quais serão transmitidas para exibição.
+A view controla o fluxo de informações entre a model e o mundo externo. Essa camada utiliza lógica programada para decidir quais informações serão extraídas do banco de dados e quais serão transmitidas para exibição.
 
 * **Serializer**
 
@@ -67,6 +67,7 @@ Com essa finalidade, será usado o SGBD PostgreSQL, um poderoso gerenciador de b
 * Descrição das Tarefas - [Plano de Iteração e Release](docs/release.md)
 * Perspectivas do projeto - [Documento de Visão](docs/doc-visao.md)
 * Descrição do [Modelo de Dados](docs/modelo_dados.md)
+* Documento de [User Stories](docs/user_story.md)
 
 ## Links Úteis
 
