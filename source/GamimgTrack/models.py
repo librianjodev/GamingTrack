@@ -21,3 +21,12 @@ permissionlevel:
     4 = moderator
     5 = administrador
 """
+
+class Postagem(models.Model):
+    id = models.AutoField(primary_key=True)
+    likes = models.IntegerField(default=0)
+    content = models.TextField()
+    title = models.TextField
+    creation_date = models.DateTimeField(blank=True, null=True, auto_now_add=True)  # Field name made lowercase.
+    user_criador = models.ForeignKey(User, on_delete= models.SET_NULL, null=True)
+    

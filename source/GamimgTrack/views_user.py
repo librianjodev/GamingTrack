@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import RegisterUserForm, LoginUserForm, ChangeUserPasswordForm, ChangeUserEmailForm, ChangeUserNameForm
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import JsonResponse
 
 from GamimgTrack.models import User
 
@@ -12,6 +12,7 @@ IrParaAlterar = "user/alterar.html"
 IrParaListarUsers = "user/lista_users.html"
 IrParaVisita = "user/visitar_outro.html"
 MensagemErro = "Algo de errado não está certo"
+IrParaInicio = "inicio.html"
 
 def RegisterUser(response):
     if response.method == "POST":
@@ -51,10 +52,15 @@ def LoginUser(response):
             else:
                 logado = User.objects.get(login=lo, password=p)
                 response.session['id_user'] = logado.id
-                return render(response, IrParaInfo, {"user":logado})
+                return render(response, IrParaInicio, {"user":logado})
     else:
         form = LoginUserForm()
         return render(response, IrParaLogin, {"form":form})
+
+def mostrar_detalhes(response):
+    logado = User.objects.get(id = response.session['id_user'])
+    return render(response, IrParaInfo, {"user":logado})
+
 def AlterarSenhaUser(response):
     logado = User.objects.get(id = response.session['id_user'])
     if response.method == "POST":
@@ -179,6 +185,6 @@ def ApagarOutraConta(response):
     if logado.permissionlevel >= 4 and ContaParaDeletar.permissionlevel <= logado.permissionlevel:
         ContaParaDeletar.delete()
         response.session['id_visita'] = ''
-        return render(response, IrParaInfo, {"user":logado})
+        return render(response, IrParaInicio, {"user":logado})
     else:
         return JsonResponse(data = {"message": MensagemErro})
