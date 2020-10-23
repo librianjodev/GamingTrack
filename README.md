@@ -40,27 +40,44 @@ Espera-se que tenhamos uma a página web bem organizada e compatível com os div
 Este projeto usará o banco de dados relacional - SQL. Com isso esperamos dados fortemente íntegros.  
 Com essa finalidade, será usado o SGBD PostgreSQL, um poderoso gerenciador de banco de dados relacional que tem ampla credibilidade no mercado. Ele é portável em alguns sistemas operacionais como Windows, MacOS e diversas distribuições Linux, além disso, dá suporte ao mapeamento objeto-relacional - ORM (sigla em inglês), podendo ser usado para trabalhar com linguagens orientadas a objetos sem problemas.
 
-    ### Criando usuario
-    1) acesse o postgres pela powershell 
-        psql -U postgres
+### Criando usuário
 
-    2)use o comando abaixo para criar o usuario do banco de dados
-        create user gamer;
+**1)** acesse o postgres pela powershell
 
-    3)sete a senha no comando abaixo: 
-        alter user gamer password 'principal';
-        NOTA: esse comando é o mesmo usado para mudar a senha
-        NOTA: caso a senha seja alterada, ir em settings.py e alterá-la no database
+```BASH
+psql -U postgres
+```
 
-    4)em seguida, garanta que ele tenha acesso ao banco de dados (que já deve ter sido criado)
-        grant all on database "GamingTrack" to gamer;
+**2)** use o comando abaixo para criar o usuario do banco de dados
 
-    5) está criado, basta escrever "exit" e sair do postgres ou fechar a powershell
+```BASH
+create user gamer;
+```
 
-    DICA: Use o comando abaixo para logar com o usuario criado:
-        psql -U gamer "GamingTrack"
+**3)** atribua a senha no comando abaixo:
 
-        gamer seria o usuário e "GamingTrack" o banco de dados, que está entre aspas devido ao fato de que caso não estivesse, o postgres iria colocar todo o nome em minúsculo.
+```BASH
+alter user gamer password 'principal';
+```
+
+NOTA 1: esse comando é o mesmo usado para mudar a senha
+NOTA 2: caso a senha seja alterada, ir em settings.py e alterá-la no ``database``
+
+**4)** em seguida, garanta que ele tenha acesso ao banco de dados (**que já deve ter sido criado**)
+
+```BASH
+grant all on database "GamingTrack" to gamer;
+```
+
+**5)** está criado, basta escrever ``exit;`` e sair do postgres ou fechar a powershell
+
+DICA: Use o comando abaixo para logar com o usuario criado:
+
+```BASH
+psql -U gamer "GamingTrack"
+```
+
+``gamer`` seria o usuário e ``"GamingTrack"`` o banco de dados, que está entre aspas devido ao fato do *postgres* colocar nomes em minúsculo.
 
 ## Informações
 
@@ -68,6 +85,8 @@ Com essa finalidade, será usado o SGBD PostgreSQL, um poderoso gerenciador de b
 * Perspectivas do projeto - [Documento de Visão](docs/doc-visao.md)
 * Descrição do [Modelo de Dados](docs/modelo_dados.md)
 * Documento de [User Stories](docs/user_story.md)
+* Documento de [Modelo Arquitetural](docs/arquitetural.md)
+* Documento de [Relatórios de Testes](docs\relatorio_de_testes.md)
 
 ## Links Úteis
 

@@ -1,6 +1,6 @@
 # Documento com a Lista de User Stories.
 
-Este documento descreve os User Stories criados a partir da Lista de Requisitos no [Documento de Visão](docs/doc-visao.md). Modelo de documento baseado nas características do processo easYProcess (YP).  
+Este documento descreve os User Stories criados a partir da Lista de Requisitos no [Documento de Visão](docs/doc-visao.md). Modelo de documento baseado nas características do processo eas*YP*rocess (**YP**).  
 
 ## Introdução
 
@@ -19,14 +19,7 @@ O presente documento tem como finalidade descrever como serão as interações d
 |**Tempo Gasto (real):**| 10h |
 |**Tamanho Funcional**| -- |
 
-#### **Testes de Aceitação (TA00)**
-
-| Código | Descrição |
-| ------ | --------- |
-|**TA00.01**| |
-|**TA00.02**| |
-|**TA00.03**| |
-|**TA00.04**| |
+**********
 
 ### User Story US01 - Atribuir Permissão de Usuário
 
@@ -39,14 +32,20 @@ O presente documento tem como finalidade descrever como serão as interações d
 |**Tempo Gasto (real):**| -- |
 |**Tamanho Funcional**| -- |
 
-### **Testes de Aceitação (TA01)**
+**********
 
-| Código | Descrição |
-| ------ | --------- |
-|**TA01.01**| |
-|**TA01.02**| |
-|**TA01.03**| |
-|**TA01.04**| |
+### User Story US02 - Conectar com APIs Externas
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema deverrá se conectar a APIs externas com a finalidade de prover dados acerca de games diversos e, consequentemente, alimentar o banco de dados com informações relevantes sobre tais games. <p> Além disso, os usuários dependem dessa conexão para poderem fazer reviews dos seus games favoritos. |
+|**Requisitos envolvidos**| RF022 |
+|**Prioridade**| Importante |
+|**Estimativa**| -- |
+|**Tempo Gasto (real):**| -- |
+|**Tamanho Funcional**| -- |
+
+**********
 
 ### User Story US03 - Permitir a Publicação de Postagens
 
@@ -59,21 +58,30 @@ O presente documento tem como finalidade descrever como serão as interações d
 |**Tempo Gasto (real):**| -- |
 |**Tamanho Funcional**| -- |
 
-### **Testes de Aceitação (TA03)**
+**********
 
-| Código | Descrição |
-| ------ | --------- |
-|**TA03.01**| |
-|**TA03.02**| |
-|**TA03.03**| |
-|**TA03.04**| |
+### User Story US04 - Permitir a Publicação de Resenhas Sobre Games
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema deve permitir que um usuário cadastrado possa fazer publicações de resenhas escritos, fotos, vídeos ou uma mistura de quaisquer desses. |
+|**Requisitos envolvidos**| RF007 |
+|**Prioridade**| Essencial |
+|**Estimativa**| -- |
+|**Tempo Gasto (real):**| -- |
+|**Tamanho Funcional**| -- |
+
+**********
 
 ### Histórico de Revisões do Modelo
 
 | Data | Versão | Descrição | Autor |
 | :--: | :----: | --------- | ----- |
 | 10/10/2020 | 1.0 | Documento inicial. | José Geraldo de Medeiros Júnior |  
-| 14/10/2020 | 1.1 | Detalhamento do US00 - Manter Usuário e US01 - Atribuir Permissão de Usuário | José Geraldo de Medeiros Júnior |  
+| 14/10/2020 | 1.1 | Detalhamento do US00 - Manter Usuário; US01 - Atribuir Permissão de Usuário; US03 - Fazer um post. | José Geraldo de Medeiros Júnior |  
+| 22/10/2020 | 1.2 | Detalhamento da US02 - Conectar com APIs externas; US04 - Fazer uma review de um game. | José Geraldo de Medeiros Júnior |  
+
+**********
 
 ## Prioridade do User Story
 
@@ -81,6 +89,8 @@ Prioridade do User Story ou dos Requisitos: A prioridade dos requisitos é utili
 **Essencial**: requisito sem o qual o sistema não entra em funcionamento. Requisitos essenciais são requisitos imprescindíveis para o funcionamento do sistema.  
 **Importante**: requisito sem o qual o sistema entra em funcionamento, mas de forma não satisfatória. Requisitos importantes devem ser implantados o mais rápido possível, mas, se não forem, parte do sistema poderá ser implantada mesmo assim.  
 **Desejável**: requisito que não compromete as funcionalidades básicas do sistema, isto é, o sistema pode funcionar de forma satisfatória sem ele. Requisitos desejáveis são requisitos que podem ser implantados por último, sem comprometer o funcionamento do sistema.  
+
+**********
 
 ## Estimativa do User Story
 
@@ -93,9 +103,13 @@ Uma boa estimativa considera dois pontos fundamentais: complexidade e esforço. 
 
 São definidos Níveis de 1 a 5 para o Esforço e Complexidade, determinando assim a dificuldade do User Story. Para saber mais leia o artigo de  (BARROS, 2018).  
 
+**********
+
 ## Tamanho Funcional
-    
+  
 Análise de Ponto de Função é um método de medição do tamanho funcional de um software, com base em operações extraídas dos requisitos funcionais. A partir dessa medição inicial de tamanho, derivam-se outras medidas como, por exemplo, o tempo necessário para desenvolvimento, e uma estimativa inicial de custos. (<https://pt.wikipedia.org/wiki/M%C3%A9trica_de_software>)
+
+**********
 
 ## Referências
 
