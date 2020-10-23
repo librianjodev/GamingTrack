@@ -5,6 +5,10 @@
     <tbody>
         <form method="POST">
             {% csrf_token %}
+            <tr>
+                <input type="text" name="filtro" placeholder="Pesquisar">
+                <button type="submit" name="pesquisar">pesquisar</button>
+            </tr>
             {%for str in lista%}
             <ul>
                 <li>{{ str.0 }}</li>

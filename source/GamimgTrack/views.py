@@ -130,6 +130,16 @@ def deletarUser(response):
 
 def ListarUsuarios(response):
     if response.method == 'POST':
+        if "pesquisar" in response.POST:
+            lista = []
+            filtro = response.POST.get('filtro')
+            for users in User.objects.exclude(id = response.session['id_user']).filter(nome__contains=filtro):
+                sla = []
+                sla.append(users.nome)
+                sla.append(users.id)
+                lista.append(sla)
+                # Ele filtra pela pesquisa por nome
+            return render(response, IrParaListarUsers, {'lista': lista})
         for i in range(len(User.objects.exclude(id = response.session['id_user']))):
             if str(i+1) in response.POST:
                 # i+1 é o id do usuario
