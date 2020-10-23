@@ -1,43 +1,20 @@
 # Projeto Arquitetural
 
-Este documento descreve a arquitetura proposta, descrevendo os padrões arquiteturais usados, requisitos não funcionais, decisões arquiteturais e descrição da tecnologias utilizadas. Contudo, no contexto de Processos Ágeis algumas das seções podem ser consideradas opcionais pela equipe. 
-Este documento deve conter os seguintes conteúdos:
-
-Introdução, Histórico de revisões, Visão geral da Arquitetura, Requisitos não-funcionais, Mecanismos arquiteturais.
-
-1. Fundamentação
-2. Visão de casos de uso
-3. Componentes
-4. Implantação
-5. Referências
-
-
-## Histórico de revisões
-
-| Data | Versão | Descrição | Autor|
-| :--- | :----: | :-------- | :--- |
-13/10/2020 | 1.0 | Documento inicial | Paulo Vítor de Medeiros Brito
-
-
-## Referências
-
-Links utilizados como referência sobre Arquitetura de Software e documentação de Arquiteturas.
-
 *********
 
-### **UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE**
+#### **UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE**
 
-### **CENTRO DE ENSINO SUPERIOR DO SERIDÓ**
+#### **CENTRO DE ENSINO SUPERIOR DO SERIDÓ**
 
-### **DEPARTAMENTO DE COMPUTAÇÃO E TECNOLOGIA**
+#### **DEPARTAMENTO DE COMPUTAÇÃO E TECNOLOGIA**
 
-### **CURSO DE BACHARELADO EM SISTEMAS DE INFORMAÇÃO**
+#### **CURSO DE BACHARELADO EM SISTEMAS DE INFORMAÇÃO**
 
 **José Geraldo de Medeiros Júnior**  
 **Paulo Vitor de Medeiros Brito**  
 **Pedro Jonas da Silva Medeiros**  
 
-## **NOME DO PROJETO: Documento de Visão**
+### **GamingTrack**
 
 **Caicó – RN**  
 **2020**  
