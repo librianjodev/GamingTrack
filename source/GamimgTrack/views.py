@@ -28,7 +28,7 @@ def registerUser(response):
         form = registerUserForm()
         return render(response, "user/register.html", {"form":form})
 def loginUser(response):
-    sla = User.objects.get(id = response.session['id_user'])
+    
     if response.method == "POST":
         form = loginUserForm(response.POST)
 
