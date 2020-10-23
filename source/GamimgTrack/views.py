@@ -4,8 +4,11 @@ from django.http import HttpResponseRedirect, JsonResponse
 
 from .models import User
 
+### Setando strings: 
 IrParaLogin = "user/login.html"
-
+IrParaRegistrar = "user/register.html"
+IrParaInfo = "user/info.html"
+IrParaAlterar = "user/alterar.html"
 
 def registerUser(response):
     if response.method == "POST":
@@ -29,7 +32,7 @@ def registerUser(response):
 
     else:
         form = RegisterUserForm()
-        return render(response, "user/register.html", {"form":form})
+        return render(response, IrParaRegistrar, {"form":form})
 def loginUser(response):
     
     if response.method == "POST":
@@ -45,7 +48,7 @@ def loginUser(response):
             else:
                 sla = User.objects.get(login=lo, password=p)
                 response.session['id_user'] = sla.id
-                return render(response, "user/info.html", {"user":sla})
+                return render(response, IrParaInfo, {"user":sla})
     else:
         form = LoginUserForm()
         return render(response, IrParaLogin, {"form":form})
@@ -61,12 +64,12 @@ def alterarSenhaUser(response):
             if (sla.password == p2) and (p == p1):
                 sla.password = p
                 sla.save()
-                return render(response, "user/info.html", {"user":sla})
+                return render(response, IrParaInfo, {"user":sla})
             else:
                 return JsonResponse(data = {"message": "Algo de errado não está certo"})
     else:
         form = ChangeUserPasswordForm()
-        return render(response, "user/alterar.html", {"form":form})
+        return render(response, IrParaAlterar, {"form":form})
 
 def alterarNomeUser(response):
     sla = User.objects.get(id = response.session['id_user'])
@@ -79,12 +82,12 @@ def alterarNomeUser(response):
             if (sla.password == p):
                 sla.nome = n
                 sla.save()
-                return render(response, "user/info.html", {"user":sla})
+                return render(response, IrParaInfo, {"user":sla})
             else:
                 return JsonResponse(data = {"message": "Senha incorreta"})
     else:
         form = ChangeUserNameForm()
-        return render(response, "user/alterar.html", {"form":form})
+        return render(response, IrParaAlterar, {"form":form})
 
 def alterarLoginUser(response):
     sla = User.objects.get(id = response.session['id_user'])
@@ -97,12 +100,12 @@ def alterarLoginUser(response):
             if (sla.password == p):
                 sla.email = e
                 sla.save()
-                return render(response, "user/info.html", {"user":sla})
+                return render(response, IrParaInfo, {"user":sla})
             else:
                 return JsonResponse(data = {"message": "Algo de errado não está certo"})
     else:
         form = ChangeUserEmailForm()
-        return render(response, "user/alterar.html", {"form":form})
+        return render(response, IrParaAlterar, {"form":form})
 
 def deletarUser(response):
     sla = User.objects.get(id = response.session['id_user'])
@@ -120,4 +123,4 @@ def deletarUser(response):
                 return JsonResponse(data = {"message": "Algo de errado não está certo"})
     else:
         form = ChangeUserEmailForm()
-        return render(response, "user/alterar.html", {"form":form})
+        return render(response, IrParaAlterar, {"form":form})
