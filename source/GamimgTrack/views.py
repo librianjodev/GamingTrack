@@ -2,13 +2,16 @@ from django.shortcuts import render
 from .forms import RegisterUserForm, LoginUserForm, ChangeUserPasswordForm, ChangeUserEmailForm, ChangeUserNameForm
 from django.http import HttpResponseRedirect, JsonResponse
 
-from .models import User
+from GamimgTrack.models import User
 
 ### Setando strings: 
 IrParaLogin = "user/login.html"
 IrParaRegistrar = "user/register.html"
 IrParaInfo = "user/info.html"
 IrParaAlterar = "user/alterar.html"
+IrParaListarUsers = "user/lista_users.html"
+IrParaVisita = "user/visitar_outro.html"
+MensagemErro = "Algo de errado não está certo"
 
 def registerUser(response):
     if response.method == "POST":
@@ -66,7 +69,7 @@ def alterarSenhaUser(response):
                 sla.save()
                 return render(response, IrParaInfo, {"user":sla})
             else:
-                return JsonResponse(data = {"message": "Algo de errado não está certo"})
+                return JsonResponse(data = {"message": MensagemErro})
     else:
         form = ChangeUserPasswordForm()
         return render(response, IrParaAlterar, {"form":form})
@@ -102,7 +105,7 @@ def alterarLoginUser(response):
                 sla.save()
                 return render(response, IrParaInfo, {"user":sla})
             else:
-                return JsonResponse(data = {"message": "Algo de errado não está certo"})
+                return JsonResponse(data = {"message": MensagemErro})
     else:
         form = ChangeUserEmailForm()
         return render(response, IrParaAlterar, {"form":form})
@@ -120,7 +123,26 @@ def deletarUser(response):
                 form = LoginUserForm()
                 return render(response, IrParaLogin, {"form":form})
             else:
-                return JsonResponse(data = {"message": "Algo de errado não está certo"})
+                return JsonResponse(data = {"message": MensagemErro})
     else:
         form = ChangeUserEmailForm()
         return render(response, IrParaAlterar, {"form":form})
+
+def ListarUsuarios(response):
+    if response.method == 'POST':
+        for i in range(len(User.objects.exclude(id = response.session['id_user']))):
+            if str(i+1) in response.POST:
+                # i+1 é o id do usuario
+                visitar = User.objects.get(id=(i+1))
+
+                return render(response, IrParaVisita, {"user":visitar})
+    else:
+        
+        lista = []
+        for users in User.objects.exclude(id = response.session['id_user']):
+            sla = []
+            sla.append(users.nome)
+            sla.append(users.id)
+            lista.append(sla)
+            #lista recebe uma lista que possue sempre 2 valores, o primeiro é o nome do usuario e o segundo o seu id
+        return render(response, IrParaListarUsers, {'lista': lista})
