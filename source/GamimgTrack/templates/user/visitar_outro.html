@@ -18,7 +18,7 @@
 
             <form method="POST">
                 {% csrf_token %}
-                {%if user.permissionlevel >= 3 and visita.permissionlevel != 0 and user.permissionlevel >= visita.permissionlevel%}
+                {%if user.permissionlevel >= 3 and visita.permissionlevel != 1 and user.permissionlevel >= visita.permissionlevel%}
                     <button type="submit" name={{upgradar.0}}>Torná-lo um Usuário Comum</button>
                 {% endif %}
                 {%if user.permissionlevel >= 3 and visita.permissionlevel != 3 and user.permissionlevel >= visita.permissionlevel%}
