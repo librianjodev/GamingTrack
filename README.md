@@ -57,6 +57,9 @@ Com essa finalidade, será usado o SGBD PostgreSQL, um poderoso gerenciador de b
 
     5) está criado, basta escrever "exit" e sair do postgres ou fechar a powershell
 
+    6) Para tester, é necessário que o user possa criar um novo banco de dados:
+        alter user gamer CREATEDB;
+
     DICA: Use o comando abaixo para logar com o usuario criado:
         psql -U gamer "GamingTrack"
 

@@ -9,6 +9,12 @@ class User(models.Model):
     email = models.TextField()
     password = models.TextField()
     login = models.TextField()
-    creationdate = models.DateTimeField(db_column='creationDate', blank=True, null=True)  # Field name made lowercase.
+    creationdate = models.DateTimeField(db_column='creationDate', blank=True, null=True, auto_now_add=True)  # Field name made lowercase.
     lastlogin = models.DateTimeField(db_column='lastLogin', blank=True, null=True)  # Field name made lowercase.
-    permissionlevel = models.IntegerField(db_column='permissionLevel', blank=True, null=True)  # Field name made lowercase.
+    permissionlevel = models.IntegerField(db_column='permissionLevel', blank=True, null=True, default=0)  # Field name made lowercase.
+
+"""
+permissionlevel:
+    0 = normal_user
+    4 = moderator
+"""

@@ -1,19 +1,3 @@
-CREATE SEQUENCE IF NOT EXISTS public."id_user"
-    INCREMENT 1;
-
-CREATE TABLE IF NOT EXISTS public."User"
-(
-    id integer NOT NULL DEFAULT nextval('id_user'),
-    nome text,
-    photo bytea,
-    email text NOT NULL,
-    password text NOT NULL,
-    login text NOT NULL,
-    "creationDate" timestamp with time zone,
-    "lastLogin" timestamp with time zone,
-    "permissionLevel" integer,
-    PRIMARY KEY (id)
-);
 
 CREATE OR REPLACE FUNCTION "inserirDataCadastro"()
     RETURNS TRIGGER
@@ -22,9 +6,9 @@ CREATE OR REPLACE FUNCTION "inserirDataCadastro"()
 
 BEGIN
 
-    UPDATE public."user"
+    UPDATE public."GamimgTrack_user"
 	SET "creationDate"=LOCALTIMESTAMP
-	WHERE new.id="user".id;
+	WHERE new.id="GamimgTrack_user".id;
 
     RETURN NEW;
 
@@ -33,6 +17,6 @@ $$;
 --/*
 CREATE TRIGGER adicionarDataCadastroUser
 AFTER INSERT 
-ON "user"
+ON "GamimgTrack_user"
 FOR EACH ROW
 EXECUTE PROCEDURE "inserirDataCadastro"();--*/
