@@ -4,6 +4,9 @@ from django.http import HttpResponseRedirect, JsonResponse
 
 from .models import User
 
+IrParaLogin = "user/login.html"
+
+
 def registerUser(response):
     if response.method == "POST":
         form = RegisterUserForm(response.POST)
@@ -20,7 +23,7 @@ def registerUser(response):
             if User.objects.filter(login=lo).count() == 0:
                 User.objects.create(email=em, login=lo, password=p, nome=n)
                 form = LoginUserForm()
-                return render(response, "user/login.html", {"form":form})
+                return render(response, IrParaLogin, {"form":form})
             else:
                 return JsonResponse(data = {"message": "E-mail já registrado no site"})
 
@@ -45,7 +48,7 @@ def loginUser(response):
                 return render(response, "user/info.html", {"user":sla})
     else:
         form = LoginUserForm()
-        return render(response, "user/login.html", {"form":form})
+        return render(response, IrParaLogin, {"form":form})
 def alterarSenhaUser(response):
     sla = User.objects.get(id = response.session['id_user'])
     if response.method == "POST":
@@ -112,7 +115,7 @@ def deletarUser(response):
             if (sla.password == p) and (sla.email == em):
                 sla.delete()
                 form = LoginUserForm()
-                return render(response, "user/login.html", {"form":form})
+                return render(response, IrParaLogin, {"form":form})
             else:
                 return JsonResponse(data = {"message": "Algo de errado não está certo"})
     else:
