@@ -18,15 +18,17 @@
 
             <form method="POST">
                 {% csrf_token %}
-
+                {%if user.permissionlevel >= 3 and visita.permissionlevel != 0 and user.permissionlevel >= visita.permissionlevel%}
+                    <button type="submit" name={{upgradar.0}}>Torná-lo um Usuário Comum</button>
+                {% endif %}
                 {%if user.permissionlevel >= 3 and visita.permissionlevel != 3 and user.permissionlevel >= visita.permissionlevel%}
-                    <button type="submit" name={{upgradar.0}}>Torná-lo Tutor</button>
+                    <button type="submit" name={{upgradar.2}}>Torná-lo Tutor</button>
                 {% endif %}
                 {%if user.permissionlevel >= 4 and visita.permissionlevel != 4 and user.permissionlevel >= visita.permissionlevel%}
-                    <button type="submit" name={{upgradar.1}}>Torná-lo Moderador</button>
+                    <button type="submit" name={{upgradar.3}}>Torná-lo Moderador</button>
                 {%endif%}
                 {%if user.permissionlevel >= 5 and visita.permissionlevel != 5 and user.permissionlevel >= visita.permissionlevel%}
-                    <button type="submit" name={{upgradar.2}}>Torná-lo Administrador</button>
+                    <button type="submit" name={{upgradar.4}}>Torná-lo Administrador</button>
                 {%endif%}
             </form>
             

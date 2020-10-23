@@ -131,10 +131,9 @@ def DeletarMinhaConta(response):
 def ListarUsuarios(response):
     logado = User.objects.get(id = response.session['id_user'])
     if response.method == 'POST':
-        ######################################################################################
         # Verifica se foi apertado um botão para upgradar alguma conta
-        upgradar = ["Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
-        NivelPermissao = 3
+        upgradar = ["Comum", '',"Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
+        NivelPermissao = 1
         for k in upgradar:
             if k in response.POST:
                 ContaParaUpgradar = User.objects.get(id = response.session['id_visita'])
@@ -144,8 +143,7 @@ def ListarUsuarios(response):
                     return render(response, IrParaVisita, {"user":logado, "visita":ContaParaUpgradar, "upgradar": upgradar})
             NivelPermissao+=1
         
-
-
+        # Verifica se o botão pressionado foi o botão de Pesquisar
         if "pesquisar" in response.POST:
             lista = []
             filtro = response.POST.get('filtro')
@@ -161,7 +159,6 @@ def ListarUsuarios(response):
                 # Aqui ele verifica se o botão pressionado tem o id do user no select
                 visitar = i
                 response.session['id_visita'] = visitar.id
-                upgradar = ["Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
                 return render(response, IrParaVisita, {"user":logado, "visita":visitar, "upgradar": upgradar})
         
         return JsonResponse(data = {"message": MensagemErro})
