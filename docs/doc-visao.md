@@ -3,15 +3,18 @@
 Documento de Visão do projeto GamingTrack, construído a partir do **Modelo BSI - Doc 001 - Documento de Visão** que pode ser encontrado no link:   
 <https://docs.google.com/document/d/1DPBcyGHgflmz5RDsZQ2X8KVBPoEF5PdAz9BBNFyLa6A/edit?usp=sharing>
 
+********
+
 ## Equipe e Definição de Papéis
 
 Membro     |     Papel   |   E-mail   |
 ---------  | ----------- | ---------- |
-Geraldo    | Analista, Desenvolvedor | geraldo_sjs@hotmail.com
-Paulo      | Gerente, Analista, Desenvolvedor | paulovmedeiros@outlook.com
-Pedro      | Analista, Desenvolvedor | pedrojonassm@gmail.com
+Geraldo    | Gerente, Analista, Desenvolvedor | geraldo_sjs@hotmail.com
+Paulo      | Analista, Desenvolvedor | paulovmedeiros@outlook.com
+Pedro      | Analista, Desenvolvedor, Testador | pedrojonassm@gmail.com
 
 &nbsp;
+********
 
 ### Matriz de Competências
 
@@ -34,6 +37,7 @@ Moderador     | Usuário que possui acesso às permissões de acesso para modera
 Usuário       | Usuário comum que possui acesso ao cadastro no site e possui permissão para publicar e interagir com outros usuários no site.  
 
 &nbsp;
+********
 
 ## Lista de Requisitos Funcionais
 
@@ -64,6 +68,7 @@ Usuário       | Usuário comum que possui acesso ao cadastro no site e possui p
 | RF023 - Manter páginas de jogos | O sistema deverá reter em banco de dados informações de jogos que receberam um resenha | Administrador |
 
 &nbsp;
+********
 
 ## Lista de Requisitos Não-Funcionais
 
@@ -73,6 +78,7 @@ Usuário       | Usuário comum que possui acesso ao cadastro no site e possui p
 | RNF002 - Conexões com APIs externas | O sistema deve buscar informações de um jogo acessado em no máximo 2 segundos |
 
 &nbsp;
+********
 
 ## Riscos
 
@@ -85,10 +91,11 @@ Tabela com o mapeamento dos riscos do projeto, as possíveis soluções e os res
 | 01/11/2020 | Implementação de protótipo com as tecnologias | Alto | Todos | Resolvido | Encontrar tutorial com a maioria da tecnologia e implementar um caso base do sistema |
 
 &nbsp;
+********
 
-### Referências
+## Referências
 
-Documentação da SteamAPI. Disponível em: <https://developer.valvesoftware.com/wiki/Steam_Web_API>
+Documentação da SteamAPI. Disponível em: <https://developer.valvesoftware.com/wiki/Steam_Web_API>  
 Documentação da API IGDB. Disponível em: <https://api-docs.igdb.com/#about>  
-Modelo de Documento de Visão do BSI. Disponível em: <https://docs.google.com/document/d/1DPBcyGHgflmz5RDsZQ2X8KVBPoEF5PdAz9BBNFyLa6A/edit>
-Modelo de Documento de Modelos do BSI. Disponível em: <https://docs.google.com/document/d/1cddfSCpBtTjmDLxsFND9BM6m9hQZSTPAwHrNYXif98/edit>
+Modelo de Documento de Visão do BSI. Disponível em: <https://docs.google.com/document/d/1DPBcyGHgflmz5RDsZQ2X8KVBPoEF5PdAz9BBNFyLa6A/edit>  
+Modelo de Documento de Modelos do BSI. Disponível em: <https://docs.google.com/document/d/1cddfSCpBtTjmDLxsFND9BM6m9hQZSTPAwHrNYXif98/edit>  
