@@ -131,6 +131,21 @@ def DeletarMinhaConta(response):
 def ListarUsuarios(response):
     logado = User.objects.get(id = response.session['id_user'])
     if response.method == 'POST':
+        ######################################################################################
+        # Verifica se foi apertado um botão para upgradar alguma conta
+        upgradar = ["Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
+        NivelPermissao = 3
+        for k in upgradar:
+            if k in response.POST:
+                ContaParaUpgradar = User.objects.get(id = response.session['id_visita'])
+                if logado.permissionlevel >= NivelPermissao and ContaParaUpgradar.permissionlevel <= logado.permissionlevel:
+                    ContaParaUpgradar.permissionlevel = NivelPermissao
+                    ContaParaUpgradar.save()
+                    return render(response, IrParaVisita, {"user":logado, "visita":ContaParaUpgradar, "upgradar": upgradar})
+            NivelPermissao+=1
+        
+
+
         if "pesquisar" in response.POST:
             lista = []
             filtro = response.POST.get('filtro')
@@ -146,7 +161,9 @@ def ListarUsuarios(response):
                 # Aqui ele verifica se o botão pressionado tem o id do user no select
                 visitar = i
                 response.session['id_visita'] = visitar.id
-                return render(response, IrParaVisita, {"user":logado, "visita":visitar})
+                upgradar = ["Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
+                return render(response, IrParaVisita, {"user":logado, "visita":visitar, "upgradar": upgradar})
+        
         return JsonResponse(data = {"message": MensagemErro})
     else:
         lista = []
@@ -159,10 +176,12 @@ def ListarUsuarios(response):
         return render(response, IrParaListarUsers, {'lista': lista})
 
 def ApagarOutraConta(response):
+    # Adm pode apagar uma conta de outro usuario
     logado = User.objects.get(id = response.session['id_user'])
     ContaParaDeletar = User.objects.get(id = response.session['id_visita'])
-    if logado.permissionlevel >= 4:
+    if logado.permissionlevel >= 4 and ContaParaDeletar.permissionlevel <= logado.permissionlevel:
         ContaParaDeletar.delete()
+        response.session['id_visita'] = ''
         return render(response, IrParaInfo, {"user":logado})
     else:
         return JsonResponse(data = {"message": MensagemErro})
