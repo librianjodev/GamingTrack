@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from GamimgTrack.forms_user import RegisterUserForm, LoginUserForm, ChangeUserPasswordForm, ChangeUserEmailForm, ChangeUserNameForm
 from django.http import JsonResponse
 
-from GamimgTrack.models import User
+from GamimgTrack.models import User, Postagem
 
 ### Setando strings: 
 IrParaLogin = "user/login.html"
@@ -13,6 +13,9 @@ IrParaListarUsers = "user/lista_users.html"
 IrParaVisita = "user/visitar_outro.html"
 MensagemErro = "Algo de errado não está certo"
 IrParaInicio = "inicio.html"
+
+IrParaListarPostagens = "posts/lista_postagens.html"
+ver_postagem = "posts/ver_postagem.html"
 
 def RegisterUser(response):
     if response.method == "POST":
@@ -188,3 +191,29 @@ def ApagarOutraConta(response):
         return render(response, IrParaInicio, {"user":logado})
     else:
         return JsonResponse(data = {"message": MensagemErro})
+
+def mostrar_meus_posts(response):
+    logado = User.objects.get(id = response.session['id_user'])
+    if response.method == "POST":
+        for i in Postagem.objects.all():
+            if str(i.id) in response.POST:
+                # Aqui ele verifica se o botão pressionado tem o id do user no select
+                visitar = i
+                response.session['id_postagem'] = visitar.id
+                criador = visitar.user_criador
+                return render(response, ver_postagem, {"user":logado, "post":visitar, "criador": criador})
+        filtro = response.POST.get('filtro')
+        lista = []
+        for posts in Postagem.objects.filter(user_criador = logado, title__contains=filtro):
+            sla = []
+            sla.append(posts.title)
+            sla.append(posts.id)
+            lista.append(sla)
+        return render(response, IrParaListarPostagens, {'lista': lista})
+    lista = []
+    for posts in Postagem.objects.filter(user_criador = logado):
+        sla = []
+        sla.append(posts.title)
+        sla.append(posts.id)
+        lista.append(sla)
+    return render(response, IrParaListarPostagens, {'lista': lista})

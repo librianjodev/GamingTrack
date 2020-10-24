@@ -12,6 +12,7 @@ urlpatterns = [
     path('listarUsers/', views_user.ListarUsuarios),
     path('listarPostagens/', views_postagens.listar_postagens),
     path('apagarConta/', views_user.ApagarOutraConta),
+    path('meusPosts/', views_user.mostrar_meus_posts),
 
     path('criarNovaPostagem/', views_postagens.criar_nova_postagem),
 ]

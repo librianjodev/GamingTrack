@@ -15,7 +15,7 @@
         <tr>
             <th>{{visita.nome}}</th>
             <th>{{visita.photo}}</th>
-
+            {% if user.id != visita.id%}
             <form method="POST">
                 {% csrf_token %}
                 {%if user.permissionlevel >= 3 and visita.permissionlevel != 1 and user.permissionlevel >= visita.permissionlevel%}
@@ -31,7 +31,7 @@
                     <button type="submit" name={{upgradar.4}}>Torná-lo Administrador</button>
                 {%endif%}
             </form>
-            
+            {%endif%}
             {% if user.permissionlevel >= 4 %}
                 <th>{{visita.creationdate}}</th>
                 <th>{{visita.lastlogin}}</th>

@@ -32,14 +32,15 @@ def listar_postagens(response):
             upgradar = ["Comum", '',"Tutor", "Moderador", "Administrador"]
             visitar = Postagem.objects.get(id = response.session['id_postagem']).user_criador
             return render(response, IrParaVisita, {"user":logado, "visita":visitar, "upgradar": upgradar})
-        elif "apagar" in response.POST:
-            Postagem.objects.get(id = response.session['id_postagem']).delete
-            #return render(response, IrParaInicio, {"user":logado})
+        if "apagar" in response.POST:
+            p = Postagem.objects.get(id = response.session['id_postagem'])
+            p.delete()
+            return render(response, IrParaInicio, {"user":logado})
         # Verifica se o botão pressionado foi o botão de Pesquisar
-        elif "pesquisar" in response.POST:
+        if "pesquisar" in response.POST:
             lista = []
             filtro = response.POST.get('filtro')
-            for posts in Postagem.objects.filter(title__contains=filtro):
+            for posts in Postagem.objects.filter(title__contains=filtro).exclude(user_criador = logado):
                 sla = []
                 sla.append(posts.title)
                 sla.append(posts.id)
@@ -57,7 +58,7 @@ def listar_postagens(response):
     else:
         lista = []
         filtro = response.POST.get('filtro')
-        for posts in Postagem.objects.all():
+        for posts in Postagem.objects.exclude(user_criador = logado):
             sla = []
             sla.append(posts.title)
             sla.append(posts.id)
