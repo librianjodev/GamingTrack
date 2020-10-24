@@ -48,7 +48,7 @@ Usuário       | Usuário comum que possui acesso ao cadastro no site e possui p
 | RF003 - Auto-apagar conta | O usuário poderá se apagar do sistema | Usuário |
 | RF004 - Visualizar seus dados | O usuário poderá visualizar seus dados retidos pelo sistema, incluindo dados do último acessos | Usuário |
 | RF005 - Atribuir permissão de *moderador*| O usuário poderá ser promovido a *moderador* | Administrador - Moderado |
-| RF006 - Remover permissão de *moderador* | O usuário poderá ser despromovido de *moderador* para usuário | Administrador - Moderado - Usuário |
+| RF006 - Remover permissão de *moderador* | O usuário poderá ser despromovido de *moderador* para usuário | Administrador - Moderador - Usuário |
 | RF007 - Permitir a criação de resenhas sobre jogos | O usuário poderá publicar conteúdo sobre jogos específicos como avaliações escritas, vídeos e imagens | Usuário |
 | RF008 - Permitir a criação de comentários em resenhas sobre jogos | O usuário poderá fazer comentários nas resenhas de outros usuários | Usuário |
 | RF009 - Permitir a criação de postagens | O usuário poderá publicar conteúdo diversos sobre jogos ou afins, incluindo ou não fotos e vídeos | Usuário |
@@ -66,6 +66,9 @@ Usuário       | Usuário comum que possui acesso ao cadastro no site e possui p
 | RF021 - Gostar de uma postagem | O usuário pode clicar no símbolo de gostar para dar reputação à postagem | Usuário |
 | RF022 - Visualizar páginas de jogos | O sistema deverá acessar páginas de jogos a partir da conexão com APIs externas do IGDB e Steam | Administrador |
 | RF023 - Manter páginas de jogos | O sistema deverá reter em banco de dados informações de jogos que receberam um resenha | Administrador |
+| RF024 - Permitir a busca por usuários | O sistema deverá permitir a busca por usuários cadastrados | Usuario |
+| RF025 - Permitir busca por Postagens | O sistema deverá permitir a busca por postagens criadas | Usuario |
+| RF026 - Permitir busca por Resenhas de jogos| O sistema deverá permitir a busca por resenhas de jogos criadas | Usuario |
 
 &nbsp;
 ********
