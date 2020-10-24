@@ -1,0 +1,12 @@
+<body>
+    <p>{{post.title}}</p>
+    <p>{{post.content}}</p>
+    <form method="POST">
+        {% csrf_token %}
+        {%if user.permissionlevel >= 3 and user.permissionlevel >= criador.permissionlevel%}
+            <button type="submit" name="apagar">Apagar este post</button>
+        {% endif %}
+        <p>Criado por: </p>
+        <button type="submit" name="visitar">{{criador.nome}}</button>
+    </form>
+</body>

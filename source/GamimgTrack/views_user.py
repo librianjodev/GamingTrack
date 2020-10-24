@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import RegisterUserForm, LoginUserForm, ChangeUserPasswordForm, ChangeUserEmailForm, ChangeUserNameForm
+from GamimgTrack.forms_user import RegisterUserForm, LoginUserForm, ChangeUserPasswordForm, ChangeUserEmailForm, ChangeUserNameForm
 from django.http import JsonResponse
 
 from GamimgTrack.models import User
