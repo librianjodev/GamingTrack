@@ -143,7 +143,7 @@ def ListarUsuarios(response):
     logado = User.objects.get(id = response.session['id_user'])
     if response.method == 'POST':
         # Verifica se foi apertado um botão para upgradar alguma conta
-        upgradar = ["Comum", '',"Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
+        upgradar = ["Comum", '[criar novo cargo]',"Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
         NivelPermissao = 1
         for k in upgradar:
             if k in response.POST:
