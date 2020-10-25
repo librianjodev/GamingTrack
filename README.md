@@ -86,7 +86,7 @@ psql -U gamer "GamingTrack"
 * Descrição do [Modelo de Dados](docs/modelo_dados.md)
 * Documento de [User Stories](docs/user_story.md)
 * Documento de [Modelo Arquitetural](docs/arquitetural.md)
-* Documento de [Relatórios de Testes](docs\relatorio_de_testes.md)
+* Documento de [Relatórios de Testes](docs/relatorio_de_testes.md)
 
 ## Links Úteis
 
