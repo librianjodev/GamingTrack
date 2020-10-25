@@ -4,6 +4,8 @@ django.setup()
 from django.test import TestCase
 from GamimgTrack.models import *
 
+from views_user import upgradar_conta
+
 # Create your tests here.
 
 class UserTests(TestCase):
@@ -23,5 +25,12 @@ class UserTests(TestCase):
         u.delete() # Ao deletar, o criador deve se tornar null
         self.assertIsNone(p.user_criador.id)
         p.delete()
+    
+    def test_upgrade_de_conta(self):
+        logado = User.objects.create(nome='logado', email='nenhum@gmail.com', login='Sou Foda', password='Pra caralho')
+        conta_para_upgradar = User.objects.create(email='teste', login='login', password='null', nome='Teste')
+        self.assertNotEquals(0, upgradar_conta(logado, conta_para_upgradar, 4)) # Usuário comum tentando fazer outro usuário virar moderador
+        # Isso não irá acontecer no site, visto que tal botão sequer aparece na página
+
 
         

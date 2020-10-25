@@ -139,6 +139,13 @@ def DeletarMinhaConta(response):
         form = ChangeUserEmailForm()
         return render(response, IrParaAlterar, {"form":form})
 
+def upgradar_conta(logado, ContaParaUpgradar, NivelPermissao):
+    if logado.permissionlevel >= NivelPermissao and ContaParaUpgradar.permissionlevel <= logado.permissionlevel and logado.permissionlevel >= 3:
+        ContaParaUpgradar.permissionlevel = NivelPermissao
+        ContaParaUpgradar.save()
+        return 1
+    return 0
+
 def ListarUsuarios(response):
     logado = User.objects.get(id = response.session['id_user'])
     if response.method == 'POST':
@@ -148,10 +155,10 @@ def ListarUsuarios(response):
         for k in upgradar:
             if k in response.POST:
                 ContaParaUpgradar = User.objects.get(id = response.session['id_visita'])
-                if logado.permissionlevel >= NivelPermissao and ContaParaUpgradar.permissionlevel <= logado.permissionlevel:
-                    ContaParaUpgradar.permissionlevel = NivelPermissao
-                    ContaParaUpgradar.save()
+                if upgradar_conta(logado, ContaParaUpgradar, NivelPermissao) == 1:
                     return render(response, IrParaVisita, {"user":logado, "visita":ContaParaUpgradar, "upgradar": upgradar})
+                else:
+                    return JsonResponse(data = {"message": MensagemErro})
             NivelPermissao+=1
         
         # Verifica se o botão pressionado foi o botão de Pesquisar
