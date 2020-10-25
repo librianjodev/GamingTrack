@@ -30,9 +30,10 @@ def RegisterUser(response):
             lo = form.cleaned_data["login"]
             p = form.cleaned_data["password"]
             p1 = form.cleaned_data["password1"]
-            if p != p1:
+            r = criar_conta(n, em, lo, p, p1)
+            if r == 0:
                 return JsonResponse(data = {"message": "Erro: Senhas diferentes"})
-            if User.objects.filter(login=lo).count() == 0:
+            elif r == 1:
                 User.objects.create(email=em, login=lo, password=p, nome=n)
                 form = LoginUserForm()
                 return render(response, IrParaLogin, {"form":form})
@@ -42,6 +43,14 @@ def RegisterUser(response):
     else:
         form = RegisterUserForm()
         return render(response, IrParaRegistrar, {"form":form})
+
+def criar_conta(nome, email, login, senha, repetir_senha):
+    if senha != repetir_senha:
+        return 0 # Senhas diferentes
+    if User.objects.filter(login=login).count() == 0 and User.objects.filter(email=email).count() == 0:
+        return 1 # tudo certo, usuário criado
+    else:
+        return 2 # E-mail ou login já registrado
 def LoginUser(response):
     
     if response.method == "POST":
@@ -139,19 +148,26 @@ def DeletarMinhaConta(response):
         form = ChangeUserEmailForm()
         return render(response, IrParaAlterar, {"form":form})
 
+def upgradar_conta(logado, ContaParaUpgradar, NivelPermissao):
+    if logado.permissionlevel >= NivelPermissao and ContaParaUpgradar.permissionlevel <= logado.permissionlevel and logado.permissionlevel >= 3:
+        ContaParaUpgradar.permissionlevel = NivelPermissao
+        ContaParaUpgradar.save()
+        return 1
+    return 0
+
 def ListarUsuarios(response):
     logado = User.objects.get(id = response.session['id_user'])
     if response.method == 'POST':
         # Verifica se foi apertado um botão para upgradar alguma conta
-        upgradar = ["Comum", '',"Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
+        upgradar = ["Comum", '[criar novo cargo]',"Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
         NivelPermissao = 1
         for k in upgradar:
             if k in response.POST:
                 ContaParaUpgradar = User.objects.get(id = response.session['id_visita'])
-                if logado.permissionlevel >= NivelPermissao and ContaParaUpgradar.permissionlevel <= logado.permissionlevel:
-                    ContaParaUpgradar.permissionlevel = NivelPermissao
-                    ContaParaUpgradar.save()
+                if upgradar_conta(logado, ContaParaUpgradar, NivelPermissao) == 1:
                     return render(response, IrParaVisita, {"user":logado, "visita":ContaParaUpgradar, "upgradar": upgradar})
+                else:
+                    return JsonResponse(data = {"message": MensagemErro})
             NivelPermissao+=1
         
         # Verifica se o botão pressionado foi o botão de Pesquisar

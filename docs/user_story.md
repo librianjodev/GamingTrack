@@ -15,8 +15,8 @@ O presente documento tem como finalidade descrever como serão as interações d
 |**Descrição**| O sistema deve manter um cadastro de usuário que tem acesso ao via login e senha. <p> Um usuário tem os atributos name, id, email, username, password. O email será o login e ele pode registrar-se diretamente no sistema. Além disso o usuário poderá alterar alguns dados, como o e-mail ou a senha. |
 |**Requisitos envolvidos**| RF001, RF002, RF003, RF004 |
 |**Prioridade**| Essencial |
-|**Estimativa**| -- |
-|**Tempo Gasto (real):**| 10h |
+|**Estimativa**| 6h |
+|**Tempo Gasto (real):**| 4h |
 |**Tamanho Funcional**| -- |
 
 **********
@@ -28,8 +28,8 @@ O presente documento tem como finalidade descrever como serão as interações d
 |**Descrição**| O sistema deve permitir que usuários comuns virem usuários moderadores mediante promoção por um administrador, também será possível remover a permissão de moderador.<p> Para isso, algum adminitrador deve ser criado no banco de dados e este dará as primeiras permissões |
 |**Requisitos envolvidos**| RF005, RF006 |
 |**Prioridade**| Importante |
-|**Estimativa**| -- |
-|**Tempo Gasto (real):**| -- |
+|**Estimativa**| 5h |
+|**Tempo Gasto (real):**| 6h |
 |**Tamanho Funcional**| -- |
 
 **********
@@ -54,13 +54,26 @@ O presente documento tem como finalidade descrever como serão as interações d
 |**Descrição**| O sistema deve permitir que um usuário cadastrado possa fazer publicações de comentários escritos, fotos, vídeos uma mistura de quaisquer desses. |
 |**Requisitos envolvidos**| RF009 |
 |**Prioridade**| Essencial |
-|**Estimativa**| -- |
-|**Tempo Gasto (real):**| -- |
+|**Estimativa**| 5h |
+|**Tempo Gasto (real):**| 1h |
 |**Tamanho Funcional**| -- |
 
 **********
 
-### User Story US04 - Permitir a Publicação de Resenhas Sobre Games
+### User Story US04 - Permitir a Modificação de Postagens
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema deve permitir que um usuário cadastrado possa fazer Editar seus posts, além de apagá-los |
+|**Requisitos envolvidos**| RF009, RF013 |
+|**Prioridade**| Importante |
+|**Estimativa**| 5h |
+|**Tempo Gasto (real):**| 4h |
+|**Tamanho Funcional**| -- |
+
+**********
+
+### User Story US05 - Permitir a Publicação de Resenhas Sobre Games
 
 |                    |      |
 | ------------------ | ---- |
@@ -73,13 +86,40 @@ O presente documento tem como finalidade descrever como serão as interações d
 
 **********
 
+### User Story US06 - Permitir a pesquisa
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema deve permitir que um usuário cadastrado possa Pesquisar por outros usuários, por posts, resenhas, etc. |
+|**Requisitos envolvidos**| RF024, RF025, RF026 |
+|**Prioridade**| Desejável |
+|**Estimativa**| 10h |
+|**Tempo Gasto (real):**| -- |
+|**Tamanho Funcional**| -- |
+
+**********
+
+### User Story US07 - Atribuir poderes
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema deve permitir que um usuário com nível mínimo 3 possa deletar outro usuário, um post de outro usuário, etc. com um nível de poder menor que o seu. |
+|**Requisitos envolvidos**| RF015, RF016 |
+|**Prioridade**| Desejável |
+|**Estimativa**| 5h |
+|**Tempo Gasto (real):**| 4h |
+|**Tamanho Funcional**| -- |
+
+**********
+
 ### Histórico de Revisões do Modelo
 
 | Data | Versão | Descrição | Autor |
 | :--: | :----: | --------- | ----- |
 | 10/10/2020 | 1.0 | Documento inicial. | José Geraldo de Medeiros Júnior |  
 | 14/10/2020 | 1.1 | Detalhamento do US00 - Manter Usuário; US01 - Atribuir Permissão de Usuário; US03 - Fazer um post. | José Geraldo de Medeiros Júnior |  
-| 22/10/2020 | 1.2 | Detalhamento da US02 - Conectar com APIs externas; US04 - Fazer uma review de um game. | José Geraldo de Medeiros Júnior |  
+| 22/10/2020 | 1.2 | Detalhamento da US02 - Conectar com APIs externas; US04 - Fazer uma review de um game. | José Geraldo de Medeiros Júnior |
+| 24/10/2020 | 1.3 | Detalhamento da US04 - Permitir a Modificação de Postagens; US06 - Permitir a pesquisa; US07 - Atrubuir poderes.| Pedro Jonas da Silva Medeiros |
 
 **********
 

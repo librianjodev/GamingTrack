@@ -29,4 +29,9 @@ class Postagem(models.Model):
     title = models.TextField()
     creation_date = models.DateTimeField(blank=True, null=True, auto_now_add=True)  # Field name made lowercase.
     user_criador = models.ForeignKey(User, on_delete= models.SET_NULL, null=True)
+
+class LikePostagens(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    Postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE)
     
