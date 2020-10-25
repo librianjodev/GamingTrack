@@ -4,7 +4,7 @@ django.setup()
 from django.test import TestCase
 from GamimgTrack.models import *
 
-from views_user import upgradar_conta
+from GamimgTrack.views_user import upgradar_conta
 
 # Create your tests here.
 
@@ -29,8 +29,11 @@ class UserTests(TestCase):
     def test_upgrade_de_conta(self):
         logado = User.objects.create(nome='logado', email='nenhum@gmail.com', login='Sou Foda', password='Pra caralho')
         conta_para_upgradar = User.objects.create(email='teste', login='login', password='null', nome='Teste')
-        self.assertNotEquals(0, upgradar_conta(logado, conta_para_upgradar, 4)) # Usuário comum tentando fazer outro usuário virar moderador
+        self.assertEquals(0, upgradar_conta(logado, conta_para_upgradar, 4)) # Usuário comum tentando fazer outro usuário virar moderador
         # Isso não irá acontecer no site, visto que tal botão sequer aparece na página
-
+        logado.permissionlevel = 3
+        self.assertEquals(0, upgradar_conta(logado, conta_para_upgradar, 4)) # Usuário Tutor tentando fazer outro usuário virar moderador, não deve dar certo
+        logado.permissionlevel = 4
+        self.assertNotEquals(0, upgradar_conta(logado, conta_para_upgradar, 4)) # Usuário Moderador tentando fazer outro usuário virar moderador
 
         
