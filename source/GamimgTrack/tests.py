@@ -4,7 +4,7 @@ django.setup()
 from django.test import TestCase
 from GamimgTrack.models import *
 
-from GamimgTrack.views_user import upgradar_conta
+from GamimgTrack.views_user import upgradar_conta, criar_conta
 
 # Create your tests here.
 
@@ -35,5 +35,16 @@ class UserTests(TestCase):
         self.assertEquals(0, upgradar_conta(logado, conta_para_upgradar, 4)) # Usuário Tutor tentando fazer outro usuário virar moderador, não deve dar certo
         logado.permissionlevel = 4
         self.assertNotEquals(0, upgradar_conta(logado, conta_para_upgradar, 4)) # Usuário Moderador tentando fazer outro usuário virar moderador
+    
+    def test_criacao_de_contas(self):
+        # Vamos criar um Usuário X e tentar cadastrar outro usando o mesmo e-mail, para cadastrar o outro vamos verificar pela mesma forma que é verificada no site
+        self.assertEquals(0, criar_conta("nome", 'email', 'login', 'senha', 'repetir_senha')) # Tentativa de criar conta com senhas diferente, deve tetornar 0
+        user2 = User.objects.create(nome='logado', email='nenhum@gmail.com', login='Sou Foda', password='Pra caralho')
+        user2.save()
+        self.assertEquals(2, criar_conta("nome", 'nenhum@gmail.com', 'login', 'senha', 'senha')) # Tentativa de criar onta com um e-mail já cadastrado
+        self.assertEquals(2, criar_conta("nome", 'email', 'Sou Foda', 'senha', 'senha')) # Tentativa de criar onta com um login já usadp
+        self.assertEquals(1, criar_conta("nome", 'email', 'login', 'senha', 'senha')) # Criação de conta permitida
+        user2.delete()
+        
 
         

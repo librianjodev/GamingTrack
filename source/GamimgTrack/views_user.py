@@ -30,9 +30,10 @@ def RegisterUser(response):
             lo = form.cleaned_data["login"]
             p = form.cleaned_data["password"]
             p1 = form.cleaned_data["password1"]
-            if p != p1:
+            r = criar_conta(n, em, lo, p, p1)
+            if r == 0:
                 return JsonResponse(data = {"message": "Erro: Senhas diferentes"})
-            if User.objects.filter(login=lo).count() == 0:
+            elif r == 1:
                 User.objects.create(email=em, login=lo, password=p, nome=n)
                 form = LoginUserForm()
                 return render(response, IrParaLogin, {"form":form})
@@ -42,6 +43,14 @@ def RegisterUser(response):
     else:
         form = RegisterUserForm()
         return render(response, IrParaRegistrar, {"form":form})
+
+def criar_conta(nome, email, login, senha, repetir_senha):
+    if senha != repetir_senha:
+        return 0 # Senhas diferentes
+    if User.objects.filter(login=login).count() == 0 and User.objects.filter(email=email).count() == 0:
+        return 1 # tudo certo, usuário criado
+    else:
+        return 2 # E-mail ou login já registrado
 def LoginUser(response):
     
     if response.method == "POST":
