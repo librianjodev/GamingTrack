@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from GamimgTrack.forms_user import RegisterUserForm, LoginUserForm, ChangeUserPasswordForm, ChangeUserEmailForm, ChangeUserNameForm
 from django.http import JsonResponse
+from GamimgTrack.forms_postagens import CriarPostagemForm
 
 from GamimgTrack.models import User, Postagem
 
@@ -16,6 +17,7 @@ IrParaInicio = "inicio.html"
 
 IrParaListarPostagens = "posts/lista_postagens.html"
 ver_postagem = "posts/ver_postagem.html"
+editar_postagem = "posts/editar_post.html"
 
 def RegisterUser(response):
     if response.method == "POST":
@@ -195,6 +197,19 @@ def ApagarOutraConta(response):
 def mostrar_meus_posts(response):
     logado = User.objects.get(id = response.session['id_user'])
     if response.method == "POST":
+        if "editar_post" in response.POST:
+            post = Postagem.objects.get(id = response.session['id_postagem'])
+            form = CriarPostagemForm(initial={'content': post.content, 'title': post.title})
+            return render(response, editar_postagem, {"form":form})
+        elif "save_post" in response.POST:
+            visitar = Postagem.objects.get(id = response.session['id_postagem'])
+            form = CriarPostagemForm(response.POST)
+            if form.is_valid():
+                criador = visitar.user_criador
+                visitar.content = form.cleaned_data['content']
+                visitar.title = form.cleaned_data['title']
+                visitar.save()
+                return render(response, ver_postagem, {"user":logado, "post":visitar, "criador": criador})
         for i in Postagem.objects.all():
             if str(i.id) in response.POST:
                 # Aqui ele verifica se o botão pressionado tem o id do user no select

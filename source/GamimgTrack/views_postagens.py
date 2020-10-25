@@ -19,7 +19,7 @@ def criar_nova_postagem(response):
         if form.is_valid():
             post = Postagem.objects.create(title = form.cleaned_data['title'], content= form.cleaned_data['content'], user_criador= logado)
             post.save()
-            return render(response, IrParaInicio, {"user":logado})
+            return render(response, ver_postagem, {"user":logado, "post":post, "criador": post.user_criador})
         return JsonResponse(data = {"message": MensagemErro})
     else:
         form = CriarPostagemForm()
@@ -32,12 +32,12 @@ def listar_postagens(response):
             upgradar = ["Comum", '',"Tutor", "Moderador", "Administrador"]
             visitar = Postagem.objects.get(id = response.session['id_postagem']).user_criador
             return render(response, IrParaVisita, {"user":logado, "visita":visitar, "upgradar": upgradar})
-        if "apagar" in response.POST:
+        elif "apagar" in response.POST:
             p = Postagem.objects.get(id = response.session['id_postagem'])
             p.delete()
             return render(response, IrParaInicio, {"user":logado})
         # Verifica se o botão pressionado foi o botão de Pesquisar
-        if "pesquisar" in response.POST:
+        elif "pesquisar" in response.POST:
             lista = []
             filtro = response.POST.get('filtro')
             for posts in Postagem.objects.filter(title__contains=filtro).exclude(user_criador = logado):
