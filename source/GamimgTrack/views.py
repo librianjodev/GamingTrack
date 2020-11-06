@@ -1,6 +1,6 @@
 from rest_framework import generics, exceptions, status
 
-from .serializers import *
+from .serializers import PostagemSerializer, UserSerializer, LikePostagensSerializer
 
 
 '''
