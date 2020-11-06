@@ -174,7 +174,7 @@ def ListarUsuarios(response):
         if "pesquisar" in response.POST:
             lista = []
             filtro = response.POST.get('filtro')
-            for users in User.objects.exclude(id = response.session['id_user']).filter(nome__contains=filtro):
+            for users in User.objects.filter(nome__contains=filtro):
                 sla = []
                 sla.append(users.nome)
                 sla.append(users.id)
@@ -183,7 +183,7 @@ def ListarUsuarios(response):
             return render(response, IrParaListarUsers, {'lista': lista})
         for i in User.objects.exclude(id = response.session['id_user']):
             if str(i.id) in response.POST:
-                # Aqui ele verifica se o botão pressionado tem o id do user no select
+                # Aqui ele verifica se o botão pressionado tem o id do user na resposta do select
                 visitar = i
                 response.session['id_visita'] = visitar.id
                 return render(response, IrParaVisita, {"user":logado, "visita":visitar, "upgradar": upgradar})
@@ -191,7 +191,7 @@ def ListarUsuarios(response):
         return JsonResponse(data = {"message": MensagemErro})
     else:
         lista = []
-        for users in User.objects.exclude(id = response.session['id_user']):
+        for users in User.objects.all():
             sla = []
             sla.append(users.nome)
             sla.append(users.id)
@@ -212,6 +212,7 @@ def ApagarOutraConta(response):
 
 def mostrar_meus_posts(response):
     logado = User.objects.get(id = response.session['id_user'])
+    lista = []
     if response.method == "POST":
         if "editar_post" in response.POST:
             post = Postagem.objects.get(id = response.session['id_postagem'])
@@ -234,14 +235,12 @@ def mostrar_meus_posts(response):
                 criador = visitar.user_criador
                 return render(response, ver_postagem, {"user":logado, "post":visitar, "criador": criador})
         filtro = response.POST.get('filtro')
-        lista = []
         for posts in Postagem.objects.filter(user_criador = logado, title__contains=filtro):
             sla = []
             sla.append(posts.title)
             sla.append(posts.id)
             lista.append(sla)
         return render(response, IrParaListarPostagens, {'lista': lista})
-    lista = []
     for posts in Postagem.objects.filter(user_criador = logado):
         sla = []
         sla.append(posts.title)

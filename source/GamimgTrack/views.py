@@ -2,6 +2,8 @@ from rest_framework import generics, exceptions, status
 
 from .serializers import PostagemSerializer, UserSerializer, LikePostagensSerializer
 
+from .models import Postagem, User, LikePostagens
+
 
 '''
 List, Create
