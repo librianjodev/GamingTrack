@@ -10,7 +10,9 @@
         <button type="submit" name="editar_post">Editar meu post</button>
         <button type="submit" name="apagar">Apagar meu post</button>
         {%endif%}
+        {%if criador != None%}
         <p>Criado por: </p>
         <button type="submit" name="visitar">{{criador.nome}}</button>
+        {%endif%}
     </form>
 </body>
