@@ -174,7 +174,7 @@ def ListarUsuarios(response):
         if "pesquisar" in response.POST:
             lista = []
             filtro = response.POST.get('filtro')
-            for users in User.objects.exclude(id = response.session['id_user']).filter(nome__contains=filtro):
+            for users in User.objects.filter(nome__contains=filtro):
                 sla = []
                 sla.append(users.nome)
                 sla.append(users.id)
@@ -191,7 +191,7 @@ def ListarUsuarios(response):
         return JsonResponse(data = {"message": MensagemErro})
     else:
         lista = []
-        for users in User.objects.exclude(id = response.session['id_user']):
+        for users in User.objects.all():
             sla = []
             sla.append(users.nome)
             sla.append(users.id)
