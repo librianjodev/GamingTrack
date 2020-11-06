@@ -66,3 +66,28 @@ def listar_postagens(response):
             # Ele filtra pela pesquisa por nome
         return render(response, IrParaListarPostagens, {'lista': lista})
     return JsonResponse(data={"message": MensagemErro})
+
+def mostrar_posts_visita(response):
+    visita = User.objects.get(id = response.session['id_visita'])
+    lista = []
+    if response.method == "POST":
+        for i in Postagem.objects.all():
+            if str(i.id) in response.POST:
+                # Aqui ele verifica se o botão pressionado tem o id do user no select
+                visitar = i
+                response.session['id_postagem'] = visitar.id
+                criador = visitar.user_criador
+                return render(response, ver_postagem, {"user":visita, "post":visitar, "criador": criador})
+        filtro = response.POST.get('filtro')
+        for posts in Postagem.objects.filter(user_criador = visita, title__contains=filtro):
+            sla = []
+            sla.append(posts.title)
+            sla.append(posts.id)
+            lista.append(sla)
+        return render(response, IrParaListarPostagens, {'lista': lista})
+    for posts in Postagem.objects.filter(user_criador = visita):
+        sla = []
+        sla.append(posts.title)
+        sla.append(posts.id)
+        lista.append(sla)
+    return render(response, IrParaListarPostagens, {'lista': lista})

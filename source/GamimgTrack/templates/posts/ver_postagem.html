@@ -11,6 +11,9 @@
         <button type="submit" name="apagar">Apagar meu post</button>
         {%endif%}
         {%if criador != None%}
+    </form>
+    <form method="POST" action="/GamingTrack/listarPostagens/">
+        {% csrf_token %}
         <p>Criado por: </p>
         <button type="submit" name="visitar">{{criador.nome}}</button>
         {%endif%}

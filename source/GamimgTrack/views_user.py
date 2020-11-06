@@ -212,6 +212,7 @@ def ApagarOutraConta(response):
 
 def mostrar_meus_posts(response):
     logado = User.objects.get(id = response.session['id_user'])
+    lista = []
     if response.method == "POST":
         if "editar_post" in response.POST:
             post = Postagem.objects.get(id = response.session['id_postagem'])
@@ -234,14 +235,12 @@ def mostrar_meus_posts(response):
                 criador = visitar.user_criador
                 return render(response, ver_postagem, {"user":logado, "post":visitar, "criador": criador})
         filtro = response.POST.get('filtro')
-        lista = []
         for posts in Postagem.objects.filter(user_criador = logado, title__contains=filtro):
             sla = []
             sla.append(posts.title)
             sla.append(posts.id)
             lista.append(sla)
         return render(response, IrParaListarPostagens, {'lista': lista})
-    lista = []
     for posts in Postagem.objects.filter(user_criador = logado):
         sla = []
         sla.append(posts.title)
