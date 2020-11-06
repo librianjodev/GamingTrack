@@ -8,6 +8,7 @@ MensagemErro = "Algo de errado não está certo"
 criar_postagem = "posts/criar_post.html"
 IrParaListarPostagens = "posts/lista_postagens.html"
 ver_postagem = "posts/ver_postagem.html"
+IrParaInfo = "user/info.html"
 
 
 def criar_nova_postagem(response):
@@ -29,8 +30,10 @@ def listar_postagens(response):
     logado = User.objects.get(id=response.session['id_user'])
     if response.method == 'POST':
         if "visitar" in response.POST:
-            upgradar = ["Comum", '', "Tutor", "Moderador", "Administrador"]
             visitar = Postagem.objects.get(id=response.session['id_postagem']).user_criador
+            if visitar == logado:
+                return render(response, IrParaInfo, {"user":logado})
+            upgradar = ["Comum", '', "Tutor", "Moderador", "Administrador"]
             return render(response, IrParaVisita, {"user": logado, "visita": visitar, "upgradar": upgradar})
         elif "apagar" in response.POST:
             p = Postagem.objects.get(id=response.session['id_postagem'])
@@ -40,7 +43,7 @@ def listar_postagens(response):
         elif "pesquisar" in response.POST:
             lista = []
             filtro = response.POST.get('filtro')
-            for posts in Postagem.objects.filter(title__contains=filtro).exclude(user_criador=logado):
+            for posts in Postagem.objects.filter(title__contains=filtro):
                 sla = []
                 sla.append(posts.title)
                 sla.append(posts.id)
@@ -58,7 +61,7 @@ def listar_postagens(response):
     else:
         lista = []
         filtro = response.POST.get('filtro')
-        for posts in Postagem.objects.exclude(user_criador=logado):
+        for posts in Postagem.objects.all():
             sla = []
             sla.append(posts.title)
             sla.append(posts.id)
