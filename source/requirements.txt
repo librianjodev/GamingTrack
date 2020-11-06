@@ -1,0 +1,7 @@
+Django==2.2.16
+django-filter==2.4.0
+djangorestframework==3.12.1
+Markdown==3.3.3
+psycopg2-binary==2.8.6
+pytz==2020.1
+sqlparse==0.4.1
