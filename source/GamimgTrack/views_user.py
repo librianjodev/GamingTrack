@@ -183,7 +183,7 @@ def ListarUsuarios(response):
             return render(response, IrParaListarUsers, {'lista': lista})
         for i in User.objects.exclude(id = response.session['id_user']):
             if str(i.id) in response.POST:
-                # Aqui ele verifica se o botão pressionado tem o id do user no select
+                # Aqui ele verifica se o botão pressionado tem o id do user na resposta do select
                 visitar = i
                 response.session['id_visita'] = visitar.id
                 return render(response, IrParaVisita, {"user":logado, "visita":visitar, "upgradar": upgradar})
