@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from GamimgTrack.forms_user import RegisterUserForm, LoginUserForm, ChangeUserPasswordForm, ChangeUserEmailForm, ChangeUserNameForm
+from .forms_user import RegisterUserForm, LoginUserForm, ChangeUserPasswordForm, ChangeUserEmailForm, ChangeUserNameForm
 from django.http import JsonResponse
-from GamimgTrack.forms_postagens import CriarPostagemForm
+from .forms_postagens import CriarPostagemForm
 
-from GamimgTrack.models import User, Postagem
+from .models import User, Postagem
 
-### Setando strings: 
+### Setando strings:
 IrParaLogin = "user/login.html"
 IrParaRegistrar = "user/register.html"
 IrParaInfo = "user/info.html"
@@ -52,7 +52,7 @@ def criar_conta(nome, email, login, senha, repetir_senha):
     else:
         return 2 # E-mail ou login já registrado
 def LoginUser(response):
-    
+
     if response.method == "POST":
         form = LoginUserForm(response.POST)
 
@@ -169,7 +169,7 @@ def ListarUsuarios(response):
                 else:
                     return JsonResponse(data = {"message": MensagemErro})
             NivelPermissao+=1
-        
+
         # Verifica se o botão pressionado foi o botão de Pesquisar
         if "pesquisar" in response.POST:
             lista = []
@@ -187,7 +187,7 @@ def ListarUsuarios(response):
                 visitar = i
                 response.session['id_visita'] = visitar.id
                 return render(response, IrParaVisita, {"user":logado, "visita":visitar, "upgradar": upgradar})
-        
+
         return JsonResponse(data = {"message": MensagemErro})
     else:
         lista = []
