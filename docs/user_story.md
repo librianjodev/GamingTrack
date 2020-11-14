@@ -41,7 +41,7 @@ O presente documento tem como finalidade descrever como serão as interações d
 |**Descrição**| O sistema deverrá se conectar a APIs externas com a finalidade de prover dados acerca de games diversos e, consequentemente, alimentar o banco de dados com informações relevantes sobre tais games. <p> Além disso, os usuários dependem dessa conexão para poderem fazer reviews dos seus games favoritos. |
 |**Requisitos envolvidos**| RF022 |
 |**Prioridade**| Importante |
-|**Estimativa**| -- |
+|**Estimativa**| 3h |
 |**Tempo Gasto (real):**| -- |
 |**Tamanho Funcional**| -- |
 
@@ -80,7 +80,7 @@ O presente documento tem como finalidade descrever como serão as interações d
 |**Descrição**| O sistema deve permitir que um usuário cadastrado possa fazer publicações de resenhas escritos, fotos, vídeos ou uma mistura de quaisquer desses. |
 |**Requisitos envolvidos**| RF007, RF011, RF015, RF026 |
 |**Prioridade**| Essencial |
-|**Estimativa**| -- |
+|**Estimativa**| 5h |
 |**Tempo Gasto (real):**| -- |
 |**Tamanho Funcional**| -- |
 
@@ -93,7 +93,7 @@ O presente documento tem como finalidade descrever como serão as interações d
 |**Descrição**| O sistema devera permitir que o usuário faça comentários em Postagens |
 |**Requisitos envolvidos**| RF008, RF010, RF012, RF014, RF015, RF027 |
 |**Prioridade**| Importante |
-|**Estimativa**| -- |
+|**Estimativa**| 5h |
 |**Tempo Gasto (real):**| -- |
 |**Tamanho Funcional**| -- |
 
