@@ -10,7 +10,7 @@ It1      | 17/09/2020  | 26/09/2020 | 25/09/2020   | Paulo Vítor | Criar Docume
 It2      | 27/09/2020  | 10/10/2020 | 09/10/2020   | Paulo Vítor | Implementar US00, Detalhar US01, US02.
 It3      | 11/10/2020  | 24/10/2020 | 23/10/2020   | Geraldo | Implementar US01, US03, Detalhar US02, US04, Testar US00.
 It4      | 25/10/2020  | 07/11/2020 | 06/11/2020   | Geraldo | Implementar US02, US04, detalhar os US restante, corrigir os erros do US00 e testar o US01 e US03.
-It5      | 08/11/2020  | 21/11/2020 | 20/11/2020   | Pedro Jonas | Implementar US05, corrigir os erros do US01/03 e testar o US02 e US04.
+It5      | 08/11/2020  | 21/11/2020 | 20/11/2020   | Pedro Jonas | Implementar US05, US06 e US02. Fazer a Análise de PF detalhada.
 It6      | 22/11/2020  | 05/12/2020 | 04/12/2020   | Pedro Jonas |
 
 * Observação 1: Cada Iteração de ser cadastrada como Milestones no GitHub.
