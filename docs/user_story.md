@@ -47,59 +47,20 @@ O presente documento tem como finalidade descrever como serão as interações d
 
 **********
 
-### User Story US03 - Permitir a Publicação de Postagens
+### User Story US03 - Manter Postagens
 
 |                    |      |
 | ------------------ | ---- |
-|**Descrição**| O sistema deve permitir que um usuário cadastrado possa fazer publicações de comentários escritos, fotos, vídeos uma mistura de quaisquer desses. |
-|**Requisitos envolvidos**| RF009 |
+|**Descrição**| O sistema deve permitir que um usuário cadastrado possa fazer publicações de comentários escritos, fotos, vídeos uma mistura de quaisquer desses. Além de apagá-los, editá-los e pesquisar por eles |
+|**Requisitos envolvidos**| RF009, RF013, RF015, RF021, RF025 |
 |**Prioridade**| Essencial |
-|**Estimativa**| 5h |
-|**Tempo Gasto (real):**| 1h |
+|**Estimativa**| 3h |
+|**Tempo Gasto (real):**| 2h |
 |**Tamanho Funcional**| -- |
 
 **********
 
-### User Story US04 - Permitir a Modificação de Postagens
-
-|                    |      |
-| ------------------ | ---- |
-|**Descrição**| O sistema deve permitir que um usuário cadastrado possa fazer Editar seus posts, além de apagá-los |
-|**Requisitos envolvidos**| RF009, RF013 |
-|**Prioridade**| Importante |
-|**Estimativa**| 5h |
-|**Tempo Gasto (real):**| 4h |
-|**Tamanho Funcional**| -- |
-
-**********
-
-### User Story US05 - Permitir a Publicação de Resenhas Sobre Games
-
-|                    |      |
-| ------------------ | ---- |
-|**Descrição**| O sistema deve permitir que um usuário cadastrado possa fazer publicações de resenhas escritos, fotos, vídeos ou uma mistura de quaisquer desses. |
-|**Requisitos envolvidos**| RF007 |
-|**Prioridade**| Essencial |
-|**Estimativa**| -- |
-|**Tempo Gasto (real):**| -- |
-|**Tamanho Funcional**| -- |
-
-**********
-
-### User Story US06 - Permitir a pesquisa
-
-|                    |      |
-| ------------------ | ---- |
-|**Descrição**| O sistema deve permitir que um usuário cadastrado possa Pesquisar por outros usuários, por posts, resenhas, etc. |
-|**Requisitos envolvidos**| RF024, RF025, RF026 |
-|**Prioridade**| Desejável |
-|**Estimativa**| 10h |
-|**Tempo Gasto (real):**| -- |
-|**Tamanho Funcional**| -- |
-
-**********
-
-### User Story US07 - Atribuir poderes
+### User Story US04 - Atribuir poderes
 
 |                    |      |
 | ------------------ | ---- |
@@ -112,6 +73,32 @@ O presente documento tem como finalidade descrever como serão as interações d
 
 **********
 
+### User Story US05 - Manter Resenhas
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema deve permitir que um usuário cadastrado possa fazer publicações de resenhas escritos, fotos, vídeos ou uma mistura de quaisquer desses. |
+|**Requisitos envolvidos**| RF007, RF011, RF015, RF026 |
+|**Prioridade**| Essencial |
+|**Estimativa**| -- |
+|**Tempo Gasto (real):**| -- |
+|**Tamanho Funcional**| -- |
+
+**********
+
+### User Story US06 - Manter Comentários
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema devera permitir que o usuário faça comentários em Postagens |
+|**Requisitos envolvidos**| RF008, RF010, RF012, RF014, RF015, RF027 |
+|**Prioridade**| Essencial |
+|**Estimativa**| -- |
+|**Tempo Gasto (real):**| -- |
+|**Tamanho Funcional**| -- |
+
+**********
+
 ### Histórico de Revisões do Modelo
 
 | Data | Versão | Descrição | Autor |
@@ -120,6 +107,8 @@ O presente documento tem como finalidade descrever como serão as interações d
 | 14/10/2020 | 1.1 | Detalhamento do US00 - Manter Usuário; US01 - Atribuir Permissão de Usuário; US03 - Fazer um post. | José Geraldo de Medeiros Júnior |  
 | 22/10/2020 | 1.2 | Detalhamento da US02 - Conectar com APIs externas; US04 - Fazer uma review de um game. | José Geraldo de Medeiros Júnior |
 | 24/10/2020 | 1.3 | Detalhamento da US04 - Permitir a Modificação de Postagens; US06 - Permitir a pesquisa; US07 - Atrubuir poderes.| Pedro Jonas da Silva Medeiros |
+| 14/11/2020 | 1.4 | Detalhamento da US06 - Manter Comentários; US07 agora é US04; US04 e US06 deletados; modificação de nome dos US US03 e US05 para, respectivamente, Manter Postagens e Manter Resenhas; alterado detalhamento de US03 e US05. | Pedro Jonas da Silva Medeiros |
+
 
 **********
 
