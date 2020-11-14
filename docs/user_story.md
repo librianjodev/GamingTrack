@@ -92,7 +92,7 @@ O presente documento tem como finalidade descrever como serão as interações d
 | ------------------ | ---- |
 |**Descrição**| O sistema devera permitir que o usuário faça comentários em Postagens |
 |**Requisitos envolvidos**| RF008, RF010, RF012, RF014, RF015, RF027 |
-|**Prioridade**| Essencial |
+|**Prioridade**| Importante |
 |**Estimativa**| -- |
 |**Tempo Gasto (real):**| -- |
 |**Tamanho Funcional**| -- |
