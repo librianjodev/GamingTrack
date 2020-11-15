@@ -8,6 +8,7 @@ MensagemErro = "Algo de errado não está certo"
 criar_postagem = "posts/criar_post.html"
 IrParaListarPostagens = "posts/lista_postagens.html"
 ver_postagem = "posts/ver_postagem.html"
+IrParaInfo = "user/info.html"
 
 
 def criar_nova_postagem(response):
@@ -29,8 +30,10 @@ def listar_postagens(response):
     logado = User.objects.get(id=response.session['id_user'])
     if response.method == 'POST':
         if "visitar" in response.POST:
-            upgradar = ["Comum", '', "Tutor", "Moderador", "Administrador"]
             visitar = Postagem.objects.get(id=response.session['id_postagem']).user_criador
+            if visitar == logado:
+                return render(response, IrParaInfo, {"user":logado})
+            upgradar = ["Comum", '', "Tutor", "Moderador", "Administrador"]
             return render(response, IrParaVisita, {"user": logado, "visita": visitar, "upgradar": upgradar})
         elif "apagar" in response.POST:
             p = Postagem.objects.get(id=response.session['id_postagem'])
@@ -40,7 +43,7 @@ def listar_postagens(response):
         elif "pesquisar" in response.POST:
             lista = []
             filtro = response.POST.get('filtro')
-            for posts in Postagem.objects.filter(title__contains=filtro).exclude(user_criador=logado):
+            for posts in Postagem.objects.filter(title__contains=filtro):
                 sla = []
                 sla.append(posts.title)
                 sla.append(posts.id)
@@ -58,7 +61,7 @@ def listar_postagens(response):
     else:
         lista = []
         filtro = response.POST.get('filtro')
-        for posts in Postagem.objects.exclude(user_criador=logado):
+        for posts in Postagem.objects.all():
             sla = []
             sla.append(posts.title)
             sla.append(posts.id)
@@ -66,3 +69,28 @@ def listar_postagens(response):
             # Ele filtra pela pesquisa por nome
         return render(response, IrParaListarPostagens, {'lista': lista})
     return JsonResponse(data={"message": MensagemErro})
+
+def mostrar_posts_visita(response):
+    visita = User.objects.get(id = response.session['id_visita'])
+    lista = []
+    if response.method == "POST":
+        for i in Postagem.objects.all():
+            if str(i.id) in response.POST:
+                # Aqui ele verifica se o botão pressionado tem o id do user no select
+                visitar = i
+                response.session['id_postagem'] = visitar.id
+                criador = visitar.user_criador
+                return render(response, ver_postagem, {"user":visita, "post":visitar, "criador": criador})
+        filtro = response.POST.get('filtro')
+        for posts in Postagem.objects.filter(user_criador = visita, title__contains=filtro):
+            sla = []
+            sla.append(posts.title)
+            sla.append(posts.id)
+            lista.append(sla)
+        return render(response, IrParaListarPostagens, {'lista': lista})
+    for posts in Postagem.objects.filter(user_criador = visita):
+        sla = []
+        sla.append(posts.title)
+        sla.append(posts.id)
+        lista.append(sla)
+    return render(response, IrParaListarPostagens, {'lista': lista})

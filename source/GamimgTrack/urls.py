@@ -22,9 +22,10 @@ urlpatterns = [
     path('changeMyEmail/', views_user.AlterarNomeUser),
     path('deleteMyUser/', views_user.DeletarMinhaConta),
     path('listarUsers/', views_user.ListarUsuarios),
-    path('listarPostagens/', views_postagens.listar_postagens),
     path('apagarConta/', views_user.ApagarOutraConta),
     path('meusPosts/', views_user.mostrar_meus_posts),
 
+    path('listarPostagens/', views_postagens.listar_postagens),
+    path('outrosPosts/', views_postagens.mostrar_posts_visita),
     path('criarNovaPostagem/', views_postagens.criar_nova_postagem),
 ]
