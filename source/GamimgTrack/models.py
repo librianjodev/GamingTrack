@@ -53,3 +53,10 @@ class LikePostagens(models.Model):
 
     def __int__(self):
         return self.user_like
+
+class ComentariosPostagens(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE)
+    comentario = models.TextField(default="")
+

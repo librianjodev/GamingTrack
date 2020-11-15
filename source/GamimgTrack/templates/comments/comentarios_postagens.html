@@ -1,0 +1,39 @@
+<!--
+    Essa página será estendida em outras que precisem de comentários
+    para ela funcionar, basta mudar a lista enviada na variável lista_comentarios
+    lembrando que a lista_commentarios deve ser uma lista de listas com 2 espaços seguindo o seguinte padrão:
+    [ #[nome, comentário, idComentario, idUser criador do comentário, id criador do post] ]
+ -->
+<body>
+    <thead>
+    </thead>
+    <tbody>
+        <form method="POST" action="/GamingTrack/listarPostagens/">
+            {% csrf_token %}
+            <tr>
+                <input type="text" name="comentario">
+                <button type="submit" name="comentar">Postar comentario</button>
+            </tr>
+        </form>
+            {%for str in lista_comentarios%}
+            <ul>
+                <tr>
+                    <th>{{str.0}}</th> <!-- nome de quem fez o comentário -->
+                    <th>{{str.1}}</th> <!-- comentário do usuário -->
+                    {%if user.id == str.3%}
+                    <form method="POST" action="/GamingTrack/apagarOuEditarComentarioPostagem/">
+                        {% csrf_token %}
+                        <button type="submit" name={{str.2}}>Ver comentario</button>
+                    </form>
+                    {%endif%}
+                    {%if user.permissionlevel >= 3 or user.id == str.4%}
+                    <form method="POST" action="/GamingTrack/admOuCriadorApagaComentarioEmPost/">
+                        {% csrf_token %}
+                        <button type="submit" name={{str.2}}>Apagar comentario</button>
+                    </form>
+                    {%endif%}
+                </tr>
+            </ul>
+            {% endfor %}
+    </tbody>
+</body>
