@@ -69,6 +69,7 @@ Usuário       | Usuário comum que possui acesso ao cadastro no site e possui p
 | RF024 - Permitir a busca por usuários | O sistema deverá permitir a busca por usuários cadastrados | Usuario |
 | RF025 - Permitir busca por Postagens | O sistema deverá permitir a busca por postagens criadas | Usuario |
 | RF026 - Permitir busca por Resenhas de jogos| O sistema deverá permitir a busca por resenhas de jogos criadas | Usuario |
+| RF027 - Gostar de um comentário | O usuário pode clicar no símbolo de gostar para dar reputação ao comentário | Usuário |
 
 &nbsp;
 ********
