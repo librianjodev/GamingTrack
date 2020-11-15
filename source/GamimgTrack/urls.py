@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views_user, views_postagens, views
+from . import views_user, views_postagens, views, views_comentarios
 
 urlpatterns = [
     # Django API REST framework
@@ -28,4 +28,6 @@ urlpatterns = [
     path('listarPostagens/', views_postagens.listar_postagens),
     path('outrosPosts/', views_postagens.mostrar_posts_visita),
     path('criarNovaPostagem/', views_postagens.criar_nova_postagem),
+    path('apagarOuEditarComentarioPostagem/', views_comentarios.editar_apagar_comentario_postagem),
+    path('admOuCriadorApagaComentarioEmPost/', views_comentarios.adm_ou_criador_apaga_comentario_em_post),
 ]
