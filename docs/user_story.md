@@ -86,7 +86,7 @@ O presente documento tem como finalidade descrever como serão as interações d
 
 **********
 
-### User Story US06 - Manter Comentários
+### User Story US06 - Manter Comentários de Postagens
 
 |                    |      |
 | ------------------ | ---- |
@@ -94,7 +94,7 @@ O presente documento tem como finalidade descrever como serão as interações d
 |**Requisitos envolvidos**| RF008, RF010, RF012, RF014, RF015, RF027 |
 |**Prioridade**| Importante |
 |**Estimativa**| 5h |
-|**Tempo Gasto (real):**| -- |
+|**Tempo Gasto (real):**| 4h |
 |**Tamanho Funcional**| -- |
 
 **********
