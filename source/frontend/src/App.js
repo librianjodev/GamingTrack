@@ -1,12 +1,12 @@
 import './App.css';
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Navhome from './components/Navhome.js'
+import Homepage from './components/pages/Homepage.js'
 
 function App() {
   return (
     <div className="App">
-      <Navhome />
+      <Homepage />
     </div>
   );
 }
