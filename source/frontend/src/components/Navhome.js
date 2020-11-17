@@ -17,12 +17,12 @@ function Navhome() {
     return (
         <>
             <Navbar className="purple" variant="dark" sticky="top">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <FaGamepad size={30}/>
                     &nbsp; GamingTrack
                 </Navbar.Brand>
                 <Nav className="ml-auto">
-                    <Button variant="light" onClick={handleShow}>Entrar</Button>
+                    <Button variant="outline-light" onClick={handleShow}>Entrar</Button>
                 </Nav>
             </Navbar>
 

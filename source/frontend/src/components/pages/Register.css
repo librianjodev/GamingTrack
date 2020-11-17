@@ -1,0 +1,53 @@
+body {
+    background-color: #0A125C;
+}
+
+.register-box{
+    margin-top: 75px;
+    background-color: #fff;
+    color: #0A125C;
+    width: 700px;
+    height: 680px;
+    border-radius: 10px;
+    align-self: center;
+    padding: 20px;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+.bttn {
+    padding: 8px 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.btn--wide {
+    padding: 12px 64px;
+    font-size: 20px;
+}
+
+.blue {
+    background-color: #276afb;
+    color: #fff;
+    border: none;
+}
+
+.btn--wide:hover {
+    background-color: #f00946;
+}
+
+.title {
+    text-align: center;
+    padding: 10px;
+}
+
+.btn--submit {
+    padding: 12px 280px;
+    font-size: 20px;
+}

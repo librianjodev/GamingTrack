@@ -98,7 +98,7 @@ FaGamepad {
     display: inline-block;
 }
 
-.btn {
+.bttn {
     padding: 8px 20px;
     border-radius: 4px;
     outline: none;

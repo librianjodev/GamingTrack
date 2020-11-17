@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row'
 import './Homepage.css'
 import Navhome from '../Navhome';
 import { FaGamepad } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function Homepage() {
 
@@ -24,7 +25,9 @@ function Homepage() {
                             <p className='subtitle'>
                                 Acompanhe seu progresso e interaja com outros jogadores nessa rede social gratuita para Gamers. 
                             </p>
-                            <Button className='btn btn--wide blue'>CRIE SUA CONTA</Button>
+                            <Link to="/register">
+                                <Button className='bttn btn--wide blue'>CRIE SUA CONTA</Button>
+                            </Link>
                         </div>
                     </Col>
                     <Col md={{span: 4, offset: 2}}>
