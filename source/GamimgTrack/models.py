@@ -54,9 +54,36 @@ class LikePostagens(models.Model):
     def __int__(self):
         return self.user_like
 
+
 class ComentariosPostagens(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE)
     comentario = models.TextField(default="")
+
+
+class Game(models.Model):
+    id = models.AutoField(primary_key=True)
+    relative_image = models.BinaryField(blank=True, null=True)
+    name = models.CharField(blank=False, null=False)
+    description = models.TextField(blank=True, null=True)
+    save_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ['name', 'description']
+
+    def __str__(self):
+        return self.name
+
+
+class Review(models.Model):
+    id = models.AutoField(primary_key=True)
+    likes = models.IntegerField(default=0)
+    content = models.TextField()
+    title = models.CharField()
+    creation_date = models.DateTimeField(auto_now_add=True)
+    user_criador = models.ForeignKey(User, on_delete=models.SET("Desconhecido"))
+
+    def __str__(self):
+        return self.title
 
