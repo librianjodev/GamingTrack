@@ -26,6 +26,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'GamimgTrack.User'
+
+#LOGIN_URL = '/'
+
 # Application definition
 
 INSTALLED_APPS = [
