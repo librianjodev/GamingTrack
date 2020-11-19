@@ -16,16 +16,6 @@ class UserTests(TestCase):
         self.assertIsNotNone(u.creationdate)
         u.delete()
     
-    def test_set_null_on_delete(self):
-        u = User.objects.create(nome='criador', email='não tenho', login='login', password='123')
-        u.save()
-        p = Postagem.objects.create(content='test', title='testar', user_criador=u)
-        p.save()
-        self.assertIsNotNone(p.user_criador) 
-        u.delete() # Ao deletar, o criador deve se tornar null
-        self.assertIsNone(p.user_criador.id)
-        p.delete()
-    
     def test_upgrade_de_conta(self):
         logado = User.objects.create(nome='logado', email='nenhum@gmail.com', login='Sou Foda', password='Pra caralho')
         conta_para_upgradar = User.objects.create(email='teste', login='login', password='null', nome='Teste')
@@ -46,5 +36,13 @@ class UserTests(TestCase):
         self.assertEquals(1, criar_conta("nome", 'email', 'login', 'senha', 'senha')) # Criação de conta permitida
         user2.delete()
         
-
-        
+class PostagensTests(TestCase):
+    def test_set_null_on_delete(self):
+        u = User.objects.create(nome='criador', email='não tenho', login='login', password='123')
+        u.save()
+        p = Postagem.objects.create(content='test', title='testar', user_criador=u)
+        p.save()
+        self.assertIsNotNone(p.user_criador) 
+        u.delete() # Ao deletar, o criador deve se tornar null
+        self.assertIsNone(p.user_criador.id)
+        p.delete()
