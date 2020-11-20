@@ -1,20 +1,51 @@
 import React, { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
-import { FaGamepad, FaTimes, FaBars } from 'react-icons/fa';
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+import { FaGamepad } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import './Navhome.css'
 
 function Navhome() {
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <>
             <Navbar className="purple" variant="dark" sticky="top">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <FaGamepad size={30}/>
                     &nbsp; GamingTrack
                 </Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
+                <Nav className="ml-auto">
+                    <Button variant="outline-light" onClick={handleShow}>Entrar</Button>
                 </Nav>
             </Navbar>
+
+            <Modal show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Acesse sua Conta</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="formLogin">
+                            <Form.Label>Login</Form.Label>
+                            <Form.Control type="text" placeholder="Insira seu nome de usuário" />
+                        </Form.Group>
+                        <Form.Group controlId="formSenha">
+                            <Form.Label>Senha</Form.Label>
+                            <Form.Control type="password" placeholder="Insira sua Senha" />
+                        </Form.Group>
+                        <Button size="lg" block variant="primary" type="submit">
+                            Entrar
+                        </Button>
+                    </Form>
+                </Modal.Body>
+            </Modal>
         </>
     )
 }

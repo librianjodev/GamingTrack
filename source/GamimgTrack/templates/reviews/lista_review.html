@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<body>
+    <thead>
+    </thead>
+    <tbody>
+        <form method="POST">
+            {% csrf_token %}
+            <tr>
+                <input type="text" name="filtro" placeholder="Pesquisar">
+                <button type="submit" name="pesquisar">Pesquisar</button>
+            </tr>
+            {%for str in lista%}
+            <ul>
+                <li>{{ str.0 }}</li>
+                <button type="submit" name={{str.1}}>Visitar</button>
+            </ul>
+            {% endfor %}
+        </form>
+    </tbody>
+</body>
