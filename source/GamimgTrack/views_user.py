@@ -203,12 +203,19 @@ def ApagarOutraConta(response):
     # Adm pode apagar uma conta de outro usuario
     logado = User.objects.get(id = response.session['id_user'])
     ContaParaDeletar = User.objects.get(id = response.session['id_visita'])
-    if logado.permissionlevel >= 4 and ContaParaDeletar.permissionlevel <= logado.permissionlevel:
+    k = deletar_outra_conta(logado.permissionlevel, ContaParaDeletar.permissionlevel)
+    if k == 1:
         ContaParaDeletar.delete()
         response.session['id_visita'] = ''
         return render(response, IrParaInicio, {"user":logado})
     else:
         return JsonResponse(data = {"message": MensagemErro})
+
+def deletar_outra_conta(nivel_de_permissao_logado, nivel_de_permissao_da_conta_a_ser_deletada):
+    if nivel_de_permissao_logado >= 4 and nivel_de_permissao_da_conta_a_ser_deletada <= nivel_de_permissao_logado:
+        return 1
+    else:
+        return 0
 
 def mostrar_meus_posts(response):
     logado = User.objects.get(id = response.session['id_user'])
