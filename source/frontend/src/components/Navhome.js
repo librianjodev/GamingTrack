@@ -26,7 +26,7 @@ function Navhome() {
                 </Nav>
             </Navbar>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Acesse sua Conta</Modal.Title>
                 </Modal.Header>
