@@ -67,7 +67,32 @@ class PostagensTests(TestCase):
             #print("Titulo do post: "+titulo+" Conteúdo:\n"+conteudo)
             post = Postagem.objects.create(content=conteudo, title=titulo)
             self.assertIsNotNone(post.creation_date)
-            
+
+class ComentariosTests(TestCase):
+    def test_deletar_ao_apagar_post(self):
+        u = User.objects.create(nome='criador', email='não tenho', login='login', password='123')
+        u.save()
+        postagem = Postagem.objects.create(content='test', title='testar', user_criador=u)
+        postagem.save()
+        comentario = ComentariosPostagens.objects.create(comentario=criar_frase_aleatoria(50), user=u, postagem=postagem)
+        comentario.save()
+        self.assertEquals(comentario.postagem, postagem)
+        idd = comentario.id
+        postagem.delete()
+        self.assertEquals(0, ComentariosPostagens.objects.filter(id=idd).count()) # se for 0, não existe mais
+    
+    def test_deletar_ao_apagar_user(self):
+        u = User.objects.create(nome='criador', email='não tenho', login='login', password='123')
+        u.save()
+        postagem = Postagem.objects.create(content='test', title='testar', user_criador=u)
+        postagem.save()
+        comentario = ComentariosPostagens.objects.create(comentario=criar_frase_aleatoria(50), user=u, postagem=postagem)
+        comentario.save()
+        self.assertEquals(comentario.postagem, postagem)
+        idd = comentario.id
+        u.delete()
+        self.assertEquals(0, ComentariosPostagens.objects.filter(id=idd).count()) # se for 0, não existe mais
+
 def criar_frase_aleatoria(tamanho_da_frase):
         letras = ['a', 'b', 'c', 'd', 'e', ' ', 'f', 'g', 'h', 'i', 'j', ' ', 'k', 'l', 'm', 'n', ' ', 'o', 'p', 'q', 'r', ' ', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         palavra = ''
