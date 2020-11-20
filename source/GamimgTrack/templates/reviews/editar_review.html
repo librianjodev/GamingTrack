@@ -1,0 +1,12 @@
+
+<form method="post">
+
+
+    {% csrf_token %}
+    <!-- Necessário sempre que usar um form -->
+
+    {{form.as_p}}
+
+    <button type="submit", name="save_post">Salvar</button>
+
+</form>
