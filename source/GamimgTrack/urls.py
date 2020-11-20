@@ -1,17 +1,19 @@
 from django.urls import path
-from . import views_user, views_postagens, views, views_comentarios
+from . import views_user, views_postagens, views, views_comentarios, views_reviews
 
 urlpatterns = [
     # Django API REST framework
     path('usuario/', views.UsersAPIView.as_view(), name='usuarios'),
     path('postagem/', views.PostagensAPIView.as_view(), name='postagens'),
     path('like/', views.LikePostagensAPIView.as_view(), name='likes'),
+    path('review/', views.ReviewAPIView.as_view(), name='reviews'),
 
     path('usuario/<int:pk>/postagem/', views.PostagemAPIView.as_view(), name='usuario_postagens'),
 
     path('usuario/<int:pk>/', views.UserAPIView.as_view(), name='usuario'),
     path('postagem/<int:pk>/', views.PostagemAPIView.as_view(), name='postagem'),
     path('like/<int:pk>/', views.LikePostagemAPIView.as_view(), name='like'),
+    path('review/<int:pk>/', views.ReviewAPIView.as_view(), name='review'),
 
     #Pure Django Framework
     path('register/', views_user.RegisterUser),
@@ -30,4 +32,9 @@ urlpatterns = [
     path('criarNovaPostagem/', views_postagens.criar_nova_postagem),
     path('apagarOuEditarComentarioPostagem/', views_comentarios.editar_apagar_comentario_postagem),
     path('admOuCriadorApagaComentarioEmPost/', views_comentarios.adm_ou_criador_apaga_comentario_em_post),
+
+    path('listarReviews/', views_reviews.listar_review),
+    path('criarReviews/', views_reviews.criar_nova_review),
+    path('listarOutrosReviews/', views_reviews.mostrar_reviews_visita),
+
 ]

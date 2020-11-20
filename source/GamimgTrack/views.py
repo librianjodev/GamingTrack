@@ -1,9 +1,8 @@
 from rest_framework import generics, exceptions, status
 
-from .serializers import PostagemSerializer, UserSerializer, LikePostagensSerializer
+from .serializers import PostagemSerializer, UserSerializer, LikePostagensSerializer, ReviewSerializer
 
-from .models import Postagem, User, LikePostagens
-
+from .models import Postagem, User, LikePostagens, Review
 
 '''
 List, Create
@@ -30,6 +29,10 @@ class LikePostagensAPIView(generics.ListCreateAPIView):
     serializer_class = LikePostagensSerializer
 
 
+class ReviewAPIView(generics.ListCreateAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
 '''
 Delete, Update
 
@@ -49,3 +52,8 @@ class UserAPIView(generics.RetrieveUpdateDestroyAPIView):
 class LikePostagemAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = LikePostagens.objects.all()
     serializer_class = LikePostagensSerializer
+
+
+class ReviewAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
