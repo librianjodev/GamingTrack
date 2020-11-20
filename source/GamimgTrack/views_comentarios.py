@@ -34,7 +34,7 @@ def adm_ou_criador_apaga_comentario_em_post(response):
                 return render(response, ver_postagem, {"user":logado, "post": postagem, "lista_comentarios":comentarios})
     return JsonResponse(data={"message": MensagemErro})
 
-def pegar_comentarios(idPostagem, userId):
+def pegar_comentarios(idPostagem):
     comentarios = []
     visitar = Postagem.objects.get(id=idPostagem)
     for i in ComentariosPostagens.objects.filter(postagem=visitar):
