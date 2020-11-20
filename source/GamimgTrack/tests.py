@@ -4,7 +4,7 @@ django.setup()
 from django.test import TestCase
 from GamimgTrack.models import *
 
-from GamimgTrack.views_user import upgradar_conta, criar_conta
+from GamimgTrack.views_user import upgradar_conta, criar_conta, deletar_outra_conta
 
 # Create your tests here.
 
@@ -35,7 +35,18 @@ class UserTests(TestCase):
         self.assertEquals(2, criar_conta("nome", 'email', 'Sou Foda', 'senha', 'senha')) # Tentativa de criar onta com um login já usadp
         self.assertEquals(1, criar_conta("nome", 'email', 'login', 'senha', 'senha')) # Criação de conta permitida
         user2.delete()
-        
+    
+    def test_deletar_outras_contas(self):
+        self.assertEquals(0, 0)
+        user = User.objects.create(nome='logado', email='nenhum', login='Sou Foda', password='Pra caralho')
+        user2 = User.objects.create(nome='aDeletar', email='sla@gmail.com', login='Idiota com I maiusculo', password='sim')
+        self.assertEquals(0, deletar_outra_conta(user.permissionlevel, user2.permissionlevel)) # não poderá apagar a outra conta visto que o user não tem o nível de permissão para tal ação
+        user.permissionlevel = 4
+        user2.permissionlevel = 5
+        self.assertEquals(0, deletar_outra_conta(user.permissionlevel, user2.permissionlevel)) # não poderá apagar a outra conta visto que o user tem um nível de poder menor que o do user2
+        user.permissionlevel = 5
+        self.assertEquals(1, deletar_outra_conta(user.permissionlevel, user2.permissionlevel)) # agora deu certo
+
 class PostagensTests(TestCase):
     def test_set_null_on_delete(self):
         u = User.objects.create(nome='criador', email='não tenho', login='login', password='123')
