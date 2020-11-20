@@ -6,6 +6,7 @@ from GamimgTrack.models import *
 
 from GamimgTrack.views_user import upgradar_conta, criar_conta, deletar_outra_conta
 
+import random
 # Create your tests here.
 
 class UserTests(TestCase):
@@ -57,3 +58,19 @@ class PostagensTests(TestCase):
         u.delete() # Ao deletar, o criador deve se tornar null
         self.assertIsNone(p.user_criador.id)
         p.delete()
+    
+    def test_criar_postagens_aleatórias(self):
+        for x in range(random.randint(1, 200)):
+            # Quantos posts serao criados?
+            titulo = criar_frase_aleatoria(random.randint(1, 50))
+            conteudo = criar_frase_aleatoria(random.randint(1, 1000))
+            #print("Titulo do post: "+titulo+" Conteúdo:\n"+conteudo)
+            post = Postagem.objects.create(content=conteudo, title=titulo)
+            self.assertIsNotNone(post.creation_date)
+            
+def criar_frase_aleatoria(tamanho_da_frase):
+        letras = ['a', 'b', 'c', 'd', 'e', ' ', 'f', 'g', 'h', 'i', 'j', ' ', 'k', 'l', 'm', 'n', ' ', 'o', 'p', 'q', 'r', ' ', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        palavra = ''
+        for i in range (tamanho_da_frase):
+            palavra += random.choice(letras)
+        return palavra
