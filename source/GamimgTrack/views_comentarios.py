@@ -20,7 +20,7 @@ def editar_apagar_comentario_postagem(response):
                 if str(i.id) in response.POST:
                     response.session['id_comentario'] = i.id
                     return render(response, editarOuApagarComentario, {"comentario": i})
-        comentarios = comentarios = pegar_comentarios(response.session['id_postagem'])
+        comentarios = pegar_comentarios(response.session['id_postagem'])
         return render(response, ver_postagem, {"user":logado, "post": visitar, "lista_comentarios":comentarios})
 
 def adm_ou_criador_apaga_comentario_em_post(response):
