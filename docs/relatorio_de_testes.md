@@ -17,56 +17,65 @@
 
 ### User Story US00 - Manter Usuário
 
-| Código | Descrição | Especificação | Resultado |
+| Teste | Descrição | Especificação | Resultado |
 | :----: | --------- | ------------- | --------- |
-|**TA00.01**| | | |
-|**TA00.02**| | | |
-|**TA00.03**| | | |
-|**TA00.04**| | | |
+| Verificar data de criação. | Teste usado para verificar se ao se criar um usuário, a data de criação é modificada. | Tudo certo. | OK. |
+| Criação de contas. | Testando as criações de conta, testando com repetição de login, repetição de senha errada, etc. | Tudo certo. | Ok. |
 
 ***********
 
 ### User Story US01 - Atribuir Permissão de Usuário
 
-| Código | Descrição | Especificação | Resultado |
+| Teste | Descrição | Especificação | Resultado |
 | :----: | --------- | ------------- | --------- |
-|**TA01.01**| | | |
-|**TA01.02**| | | |
-|**TA01.03**| | | |
-|**TA01.04**| | | |
-
+| Teste de upgrade de conta. | Esse teste verifica se apenas um usuário com poder pode dar poderes para outro usuário. Seguindo os níveis de poderes nível 3, 4 e 5. | Tudo certo. | Ok. |
 ***********
 
 ### User Story US02 - Conectar com APIs Externas
 
-| Código | Descrição | Especificação | Resultado |
+| Teste | Descrição | Especificação | Resultado |
 | :----: | --------- | ------------- | --------- |
-|**TA02.01**| | | |
-|**TA02.02**| | | |
-|**TA02.03**| | | |
-|**TA02.04**| | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
 
 ***********
 
-### User Story US03 - Permitir a Publicação de Postagens
+### User Story US03 - Manter Postagens
 
-| Código | Descrição | Especificação | Resultado |
+| Teste | Descrição | Especificação | Resultado |
 | :----: | --------- | ------------- | --------- |
-|**TA03.01**| | | |
-|**TA03.02**| | | |
-|**TA03.03**| | | |
-|**TA03.04**| | | |
+| set null on delete | Teste para verificar se o criador da postagem se torna null quando o usuário é deletado do sistema. | Tudo certo. | Ok. |
+| Criar postagens aleatórias | São criados alguns usuários, depois são criados várias postagens afim de testar se não aconteçe nenhum erro. | Tudo certo. | Um print ali é muito legal. Fora isso, ok.|
 
 ***********
 
-### User Story US04 - Permitir a Publicação de Resenhas Sobre Games
+### User Story US04 - Atribuir poderes
 
-| Código | Descrição | Especificação | Resultado |
+| Teste | Descrição | Especificação | Resultado |
 | :----: | --------- | ------------- | --------- |
-|**TA04.01**| | | |
-|**TA04.02**| | | |
-|**TA04.03**| | | |
-|**TA04.04**| | | |
+| Deletar outras contas | É criado um usuário sem poderes que tenta deletar outro usuário sem poderes. | Tudo certo. | Ok. |
+
+***********
+
+### User Story US05 - Manter Resenhas
+
+| Teste | Descrição | Especificação | Resultado |
+| :----: | --------- | ------------- | --------- |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+
+***********
+
+### User Story US06 - Manter Comentários em Postagens
+
+| Teste | Descrição | Especificação | Resultado |
+| :----: | --------- | ------------- | --------- |
+| Deletar ao apagar o post.| Verifica se o comentário é deletado após apagar o post.| Deu certo.| Ok. |
+| Deletar ao apagar o user.| Verifica se o comentário é deletado após apagar o user que criou o comentario.| Deu certo.| Ok. |
 
 ***********
 <!--
