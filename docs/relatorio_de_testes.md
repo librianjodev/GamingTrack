@@ -47,8 +47,7 @@
 | Teste | Descrição | Especificação | Resultado |
 | :----: | --------- | ------------- | --------- |
 | set null on delete | Teste para verificar se o criador da postagem se torna null quando o usuário é deletado do sistema. | Tudo certo. | Ok. |
-| Criar postagens aleatórias | São criados alguns usuários, depois são criados várias postagens afim de testar se não aconteçe nenhum erro. | Tudo certo. | Um print ali é muito legal.
-Fora isso, ok.|
+| Criar postagens aleatórias | São criados alguns usuários, depois são criados várias postagens afim de testar se não aconteçe nenhum erro. | Tudo certo. | Um print ali é muito legal. Fora isso, ok.|
 
 ***********
 
