@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     if is_testing:
         import coverage
-        cov = coverage.coverage(source=['package1', 'package2'], omit=['*/tests/*'])
+        cov = coverage.coverage(source=['GamimgTrack'], omit=['*/tests/*'])
         cov.erase()
         cov.start()
 
