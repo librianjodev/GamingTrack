@@ -19,13 +19,16 @@ class ReviewTests(TestCase):
         review.delete()
 
     def test_fazer_varias_reviews(self):
+        usuario = User.objects.create(nome='Guilherme', email='gui@email.com', login='guipg', password='alfa3')
+        usuario.save()
         for x in range(random.randint(1, 30)):
             # Quantos posts serao criados?
             titulo = criar_frase_aleatoria(random.randint(1, 50))
             conteudo = criar_frase_aleatoria(random.randint(1, 400))
             # print("Titulo do post: "+titulo+" Conteúdo:\n"+conteudo)
-            post = Review.objects.create(content=conteudo, title=titulo)
-            self.assertIsNotNone(post.creation_date)
+            review = Review.objects.create(content=conteudo, title=titulo, user_criador=usuario)
+            self.assertEqual(usuario.id,review.user_criador.id)
+            self.assertIsNotNone(review.creation_date)
 
 def criar_frase_aleatoria(tamanho_da_frase):
     letras = ['a', 'b', 'c', 'd', 'e', ' ', 'f', 'g', 'h', 'i', 'j', ' ', 'k', 'l', 'm', 'n', ' ', 'o', 'p', 'q',
