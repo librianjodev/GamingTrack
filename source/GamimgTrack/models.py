@@ -149,6 +149,12 @@ class ComentariosPostagens(models.Model):
     postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE)
     comentario = models.TextField(default="")
 
+class ComentariosReview(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    Review = models.ForeignKey(review, on_delete=models.CASCADE)
+    comentario = models.TextField(default="")
+
 
 class Game(models.Model):
     id = models.AutoField(primary_key=True)
