@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from .forms_postagens import CriarPostagemForm
 from .models import Postagem, User, ComentariosPostagens
 from .views_user import IrParaVisita, IrParaInicio
-from .views_comentarios import pegar_comentarios
+from .views_comentarios import pegar_comentarios_Postagens
 
 MensagemErro = "Algo de errado não está certo"
 criar_postagem = "posts/criar_post.html"
@@ -54,7 +54,7 @@ def listar_postagens(response):
         elif "comentar" in response.POST:
             visitar = Postagem.objects.get(id=response.session['id_postagem'])
             ComentariosPostagens.objects.create(postagem=visitar, user=logado, comentario=response.POST.get('comentario')).save()
-            comentarios = pegar_comentarios(visitar.id)
+            comentarios = pegar_comentarios_Postagens(visitar.id)
             return render(response, ver_postagem, {"user":logado, "post":visitar, "lista_comentarios":comentarios})
         for i in Postagem.objects.all():
             if str(i.id) in response.POST:
@@ -62,7 +62,7 @@ def listar_postagens(response):
                 visitar = i
                 response.session['id_postagem'] = visitar.id
                 criador = visitar.user_criador
-                comentarios = pegar_comentarios(visitar.id)
+                comentarios = pegar_comentarios_Postagens(visitar.id)
                 return render(response, ver_postagem, {"user": logado, "post": visitar, "criador": criador, "lista_comentarios":comentarios})
         return JsonResponse(data={"message": MensagemErro})
     else:
@@ -86,7 +86,7 @@ def mostrar_posts_visita(response):
                 visitar = i
                 response.session['id_postagem'] = visitar.id
                 criador = visitar.user_criador
-                comentarios = pegar_comentarios(visitar.id)
+                comentarios = pegar_comentarios_Postagens(visitar.id)
                 return render(response, ver_postagem, {"user":visita, "post":visitar, "criador": criador, "lista_comentarios":comentarios})
         filtro = response.POST.get('filtro')
         for posts in Postagem.objects.filter(user_criador = visita, title__contains=filtro):

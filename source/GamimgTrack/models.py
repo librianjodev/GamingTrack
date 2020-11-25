@@ -143,19 +143,6 @@ class LikePostagens(models.Model):
         return self.user_like
 
 
-class ComentariosPostagens(models.Model):
-    id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE)
-    comentario = models.TextField(default="")
-
-class ComentariosReview(models.Model):
-    id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    Review = models.ForeignKey(review, on_delete=models.CASCADE)
-    comentario = models.TextField(default="")
-
-
 class Game(models.Model):
     id = models.AutoField(primary_key=True)
     relative_image = models.BinaryField(blank=True, null=True)
@@ -180,3 +167,16 @@ class Review(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ComentariosPostagens(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE)
+    comentario = models.TextField(default="")
+
+class ComentariosReview(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    comentario = models.TextField(default="")
