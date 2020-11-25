@@ -53,12 +53,12 @@ def listar_review(response):
                  "upgradar": upgradar
                  }
             )
-        elif "apagar" in response.POST:
+        if "apagar" in response.POST:
             p = Review.objects.get(id=response.session['id_postagem'])
             p.delete()
             return render(response, IrParaInicio, {"user": logado})
         # Verifica se o botão pressionado foi o botão de Pesquisar
-        elif "pesquisar" in response.POST:
+        if "pesquisar" in response.POST:
             lista = []
             filtro = response.POST.get('filtro')
             for reviews in Review.objects.filter(title__contains=filtro):
@@ -68,7 +68,7 @@ def listar_review(response):
                 lista.append(lista_local)
                 # Ele filtra pela pesquisa por nome
             return render(response, GOTO_LIST_REVIEW, {'lista': lista})
-#        elif "comentar" in response.POST:
+#        if "comentar" in response.POST:
 #            visitar = Review.objects.get(id=response.session['id_postagem'])
 #            <ComentarioReview>.objects.create(postagem=visitar, user=logado,
 #                                                comentario=response.POST.get('comentario')).save()
@@ -92,7 +92,6 @@ def listar_review(response):
         return JsonResponse(data={"message": MENS_ERROR})
     else:
         lista = []
-        #filtro = response.POST.get('filtro')
         for reviews in Review.objects.all():
             lista_local = []
             lista_local.append(reviews.title)

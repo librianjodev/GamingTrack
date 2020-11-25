@@ -170,7 +170,7 @@ class Review(models.Model):
     content = models.TextField()
     title = models.CharField(max_length=255)
     creation_date = models.DateTimeField(auto_now_add=True)
-    user_criador = models.ForeignKey(User, on_delete=models.SET("Desconhecido"))
+    user_criador = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.title

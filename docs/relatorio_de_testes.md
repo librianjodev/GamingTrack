@@ -63,8 +63,9 @@
 
 | Teste | Descrição | Especificação | Resultado |
 | :----: | --------- | ------------- | --------- |
-| | | | |
-| | | | |
+|**Verificar cria/deletar uma review**| Uma review é criada por um usuário | Verificar se a review realmente é criada, verificar se ao ser apagada, ela realmente é apagada | OK |
+|**Teste de estresse de criação**| Várias reviews podem ser criadas | Verificar se várias reviews podem ser criadas com mesmo User | OK |
+|**Teste de definição null para usuario excluido**| Verificar se quando o propietário de uma review é apagado a criador é defindo como null | Ao excluir um usuário do sistema, as reviews feits por ele deve permanecer para que outros tenham acesso, porém sem usuário vinculado | OK |
 | | | | |
 | | | | |
 
