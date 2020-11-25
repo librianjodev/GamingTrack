@@ -22,7 +22,7 @@ def editar_apagar_comentario_postagem(response):
             for i in ComentariosPostagens.objects.all():
                 if str(i.id) in response.POST:
                     response.session['id_comentario'] = i.id
-                    return render(response, editarOuApagarComentarioPost, {"comentario": i})
+                    return render(response, editarOuApagarComentarioPost, {"comentario": i.comentario})
         comentarios = pegar_comentarios_Postagens(response.session['id_postagem'])
         return render(response, ver_postagem, {"user":logado, "post": Postagem.objects.get(id=response.session['id_postagem']), "lista_comentarios":comentarios})
 
@@ -84,6 +84,6 @@ def editar_apagar_comentario_review(response):
             for i in ComentariosReview.objects.all():
                 if str(i.id) in response.POST:
                     response.session['id_comentario'] = i.id
-                    return render(response, editarOuApagarComentarioReview, {"comentario": i})
+                    return render(response, editarOuApagarComentarioReview, {"comentario": i.comentario})
         comentarios = pegar_comentarios_Reviews(response.session['id_postagem'])
         return render(response, ver_postagem, {"user":logado, "post": Review.objects.get(id=response.session['id_review']), "lista_comentarios":comentarios})
