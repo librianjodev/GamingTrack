@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .forms_postagens import CriarPostagemForm
 from .models import Postagem, User, ComentariosPostagens
-from .views_user import IrParaVisita, IrParaInicio
+from .views_user import IrParaVisita, IrParaInicio, verificar_amizade
 from .views_comentarios import pegar_comentarios_Postagens
 
 MensagemErro = "Algo de errado não está certo"
@@ -35,7 +35,7 @@ def listar_postagens(response):
             if visitar == logado:
                 return render(response, IrParaInfo, {"user":logado})
             upgradar = ["Comum", '', "Tutor", "Moderador", "Administrador"]
-            return render(response, IrParaVisita, {"user": logado, "visita": visitar, "upgradar": upgradar})
+            return render(response, IrParaVisita, {"user": logado, "visita": visitar, "upgradar": upgradar, "amizade": verificar_amizade(logado, ContaParaUpgradar)})
         elif "apagar" in response.POST:
             p = Postagem.objects.get(id=response.session['id_postagem'])
             p.delete()

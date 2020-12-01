@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from .forms_reviews import CriarReviewForm
 from .models import Review, User, ComentariosReview
 VER_REVIEW = "reviews/ver_review.html"
-from .views_user import IrParaVisita, IrParaInicio
+from .views_user import IrParaVisita, IrParaInicio, verificar_amizade
 
 MENS_ERROR = "Algo de errado não está certo"
 CRIAR_REVIEW = "reviews/criar_review.html"
@@ -62,7 +62,8 @@ def listar_review(response):
                 response, IrParaVisita,
                 {"user": logado,
                  "visita": visitar,
-                 "upgradar": upgradar
+                 "upgradar": upgradar,
+                 "amizade": verificar_amizade(logado, ContaParaUpgradar)
                  }
             )
         if "apagar" in response.POST:
