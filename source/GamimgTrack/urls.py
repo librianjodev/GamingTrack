@@ -40,5 +40,6 @@ urlpatterns = [
     path('listarOutrosReviews/', views_reviews.mostrar_reviews_visita),
 
     path('adicionandoAmigo/', views_user.adicionar_amigo),
+    path('verPedidosdeAmizade/', views_user.ver_pedidos_de_amizade),
 
 ]

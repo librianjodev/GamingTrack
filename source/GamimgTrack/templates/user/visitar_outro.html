@@ -46,6 +46,8 @@
             -->
             {% if amizade == 0%}
             <button type="submit" name="adicionar">Adicionar amigo</button>
+            {% elif amizade == 1%}
+            <button type="submit" name="excluir">Excluir amigo</button>
             {% elif amizade == 2%}
             <p>Você já enviou um pedido de amizade para este usuário</p>
             <button type="submit" name="cancelar">Cancelar pedido</button>

@@ -12,8 +12,9 @@ IrParaInfo = "user/info.html"
 IrParaAlterar = "user/alterar.html"
 IrParaListarUsers = "user/lista_users.html"
 IrParaVisita = "user/visitar_outro.html"
-MensagemErro = "Algo de errado não está certo"
 IrParaInicio = "inicio.html"
+pedidos_amizade = "user/pedidos_de_amizade.html"
+MensagemErro = "Algo de errado não está certo"
 
 IrParaListarPostagens = "posts/lista_postagens.html"
 ver_postagem = "posts/ver_postagem.html"
@@ -280,6 +281,11 @@ def adicionar_amigo(response):
     if response.method == "POST":
         if "adicionar" in response.POST: # verifica se foi pressionado o botão de adicionar amigo
             ConviteAmizade.objects.create(quem_enviou=logado, quem_recebeu_o_pedido=visita).save() # cria a amizade
+        if "excluir" in response.POST:
+            if Amizade.objects.filter(amigo=logado, amigo2=visita).count() == 1:
+                Amizade.objects.get(amigo=logado, amigo2=visita).delete()
+            else:
+                Amizade.objects.get(amigo=visita, amigo2=logado).delete()
         elif "cancelar" in response.POST:
             ConviteAmizade.objects.get(quem_enviou=logado, quem_recebeu_o_pedido=visita).delete()
         elif "aceitar" in response.POST:
@@ -289,3 +295,23 @@ def adicionar_amigo(response):
             ConviteAmizade.objects.get(quem_enviou=visita, quem_recebeu_o_pedido=logado).delete()
         return render(response, IrParaVisita, {"user":logado, "visita":visita, "upgradar": upgradar, "amizade": verificar_amizade(logado, visita)})
     return JsonResponse(data = {"message": MensagemErro})
+
+def ver_pedidos_de_amizade(response):
+    logado = User.objects.get(id = response.session['id_user'])
+    upgradar = ["Comum", '[criar novo cargo]',"Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
+    if response.method == "POST":
+        # Para chegar aqui ele precisa primeiro ver a lista de amizades, logo, para poupar tempo, verificamos se existe apenas os id's dos users que o pediram em amizade:
+        for i in ConviteAmizade.objects.filter(quem_recebeu_o_pedido=logado):
+            if str(i.quem_enviou.id) in response.POST:
+                response.session['id_visita'] = i.quem_enviou.id
+                return render(response, IrParaVisita, {"user":logado, "visita":i.quem_enviou, "upgradar": upgradar, "amizade": verificar_amizade(logado, i.quem_enviou)})
+    else:
+        # Lista guarda o nome da pessoa que enviou o convite e o id dela, respectivamente
+        lista = []
+        for i in ConviteAmizade.objects.filter(quem_recebeu_o_pedido=logado):
+            sla = []
+            sla.append(i.quem_enviou.nome)
+            sla.append(i.quem_enviou.id)
+            lista.append(sla)
+        return render(response, pedidos_amizade, {"pedidos": lista})
+    return JsonResponse(data = {"message": "asdasdas"})
