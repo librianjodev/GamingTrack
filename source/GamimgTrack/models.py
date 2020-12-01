@@ -185,8 +185,12 @@ class Amizade(models.Model):
     id = models.AutoField(primary_key=True)
     amigo = models.ForeignKey(User, on_delete=models.CASCADE)
     amigo2 = models.ForeignKey(User, on_delete=models.CASCADE)
+    class Meta:
+        unique_together = ('amigo', 'amigo2')
 
 class ConviteAmizade(models.Model):
     id = models.AutoField(primary_key=True)
     quem_enviou = models.ForeignKey(User, on_delete=models.CASCADE)
     quem_recebeu_o_pedido = models.ForeignKey(User, on_delete=models.CASCADE)
+    class Meta:
+        unique_together = ('quem_enviou', 'quem_recebeu_o_pedido')
