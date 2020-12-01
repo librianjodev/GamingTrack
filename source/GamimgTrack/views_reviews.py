@@ -1,17 +1,29 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .forms_reviews import CriarReviewForm
-from .models import Review, User
-from .views_user import IrParaVisita, IrParaInicio
-from .views_comentarios import pegar_comentarios
+from .models import Review, User, ComentariosReview
+VER_REVIEW = "reviews/ver_review.html"
+from .views_user import IrParaVisita, IrParaInicio, verificar_amizade
 
 MENS_ERROR = "Algo de errado não está certo"
 CRIAR_REVIEW = "reviews/criar_review.html"
 GOTO_LIST_REVIEW = "reviews/lista_review.html"
-VER_REVIEW = "reviews/ver_review.html"
 EDIR_REVIEW = "reviews/editar_review.html"
 INFO = "user/info.html"
 
+def pegar_comentarios_Reviews(idReview):
+    comentarios = []
+    visitar = Review.objects.get(id=idReview)
+    for i in ComentariosReview.objects.filter(review=visitar):
+        sla = []
+        #[nome, comentário, idComentario, idUser, id criador da postagem]
+        sla.append(i.user.nome)
+        sla.append(i.comentario)
+        sla.append(i.id)
+        sla.append(i.user.id)
+        sla.append(visitar.user_criador.id)
+        comentarios.append(sla)
+    return comentarios
 
 def criar_nova_review(response):
     logado = User.objects.get(id=response.session['id_user'])
@@ -42,7 +54,7 @@ def listar_review(response):
     logado = User.objects.get(id=response.session['id_user'])
     if response.method == 'POST':
         if "visitar" in response.POST:
-            visitar = Review.objects.get(id=response.session['id_postagem']).user_criador
+            visitar = Review.objects.get(id=response.session['id_review']).user_criador
             if visitar == logado:
                 return render(response, INFO, {"user": logado})
             upgradar = ["Comum", '', "Tutor", "Moderador", "Administrador"]
@@ -50,11 +62,12 @@ def listar_review(response):
                 response, IrParaVisita,
                 {"user": logado,
                  "visita": visitar,
-                 "upgradar": upgradar
+                 "upgradar": upgradar,
+                 "amizade": verificar_amizade(logado, ContaParaUpgradar)
                  }
             )
         if "apagar" in response.POST:
-            p = Review.objects.get(id=response.session['id_postagem'])
+            p = Review.objects.get(id=response.session['id_review'])
             p.delete()
             return render(response, IrParaInicio, {"user": logado})
         # Verifica se o botão pressionado foi o botão de Pesquisar
@@ -68,18 +81,17 @@ def listar_review(response):
                 lista.append(lista_local)
                 # Ele filtra pela pesquisa por nome
             return render(response, GOTO_LIST_REVIEW, {'lista': lista})
-#        if "comentar" in response.POST:
-#            visitar = Review.objects.get(id=response.session['id_postagem'])
-#            <ComentarioReview>.objects.create(postagem=visitar, user=logado,
-#                                                comentario=response.POST.get('comentario')).save()
-#            comentarios = pegar_comentarios(visitar.id)
-#            return render(response, ver_postagem, {"user": logado, "post": visitar, "lista_comentarios": comentarios})
+        if "comentar" in response.POST:
+            visitar = Review.objects.get(id=response.session['id_review'])
+            ComentariosReview.objects.create(review=visitar, user=logado, comentario=response.POST.get('comentario')).save()
+            comentarios = pegar_comentarios_Reviews(visitar.id)
+            return render(response, VER_REVIEW, {"user": logado, "post": visitar, "lista_comentarios": comentarios})
         for i in Review.objects.all():
             if str(i.id) in response.POST:
                 visitar = i
-                response.session['id_postagem'] = visitar.id
+                response.session['id_review'] = visitar.id
                 criador = visitar.user_criador
-                comentarios = pegar_comentarios(visitar.id)
+                comentarios = pegar_comentarios_Reviews(visitar.id)
                 return render(
                     response, VER_REVIEW,
                     {
@@ -108,9 +120,9 @@ def mostrar_reviews_visita(response):
         for i in Review.objects.all():
             if str(i.id) in response.POST:
                 visitar = i
-                response.session['id_postagem'] = visitar.id
+                response.session['id_review'] = visitar.id
                 criador = visitar.user_criador
-                comentarios = pegar_comentarios(visitar.id)
+                comentarios = pegar_comentarios_Reviews(visitar.id)
                 return render(
                     response, VER_REVIEW,
                     {

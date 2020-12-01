@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<body>
+    <thead>
+    </thead>
+    <tbody>
+        <form method="POST" action="/GamingTrack/verPedidosdeAmizade/">
+            {% csrf_token %}
+            {%for str in pedidos%}
+            <ul>
+                <li>{{ str.0 }}</li>
+                <button type="submit" name={{str.1}}>{{str.1}}</button>
+            </ul>
+            {% endfor %}
+        </form>
+    </tbody>
+</body>

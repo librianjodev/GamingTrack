@@ -3,7 +3,7 @@ from .forms_user import RegisterUserForm, LoginUserForm, ChangeUserPasswordForm,
 from django.http import JsonResponse
 from .forms_postagens import CriarPostagemForm
 
-from .models import User, Postagem
+from .models import User, Postagem, Amizade, ConviteAmizade
 
 ### Setando strings:
 IrParaLogin = "user/login.html"
@@ -12,8 +12,9 @@ IrParaInfo = "user/info.html"
 IrParaAlterar = "user/alterar.html"
 IrParaListarUsers = "user/lista_users.html"
 IrParaVisita = "user/visitar_outro.html"
-MensagemErro = "Algo de errado não está certo"
 IrParaInicio = "inicio.html"
+pedidos_amizade = "user/pedidos_de_amizade.html"
+MensagemErro = "Algo de errado não está certo"
 
 IrParaListarPostagens = "posts/lista_postagens.html"
 ver_postagem = "posts/ver_postagem.html"
@@ -165,7 +166,7 @@ def ListarUsuarios(response):
             if k in response.POST:
                 ContaParaUpgradar = User.objects.get(id = response.session['id_visita'])
                 if upgradar_conta(logado, ContaParaUpgradar, NivelPermissao) == 1:
-                    return render(response, IrParaVisita, {"user":logado, "visita":ContaParaUpgradar, "upgradar": upgradar})
+                    return render(response, IrParaVisita, {"user":logado, "visita":ContaParaUpgradar, "upgradar": upgradar, "amizade": verificar_amizade(logado, ContaParaUpgradar)})
                 else:
                     return JsonResponse(data = {"message": MensagemErro})
             NivelPermissao+=1
@@ -181,12 +182,14 @@ def ListarUsuarios(response):
                 lista.append(sla)
                 # Ele filtra pela pesquisa por nome
             return render(response, IrParaListarUsers, {'lista': lista})
-        for i in User.objects.exclude(id = response.session['id_user']):
+        for i in User.objects.all():
             if str(i.id) in response.POST:
                 # Aqui ele verifica se o botão pressionado tem o id do user na resposta do select
+                if i == logado:
+                    return render(response, IrParaInfo, {"user":logado})
                 visitar = i
                 response.session['id_visita'] = visitar.id
-                return render(response, IrParaVisita, {"user":logado, "visita":visitar, "upgradar": upgradar})
+                return render(response, IrParaVisita, {"user":logado, "visita":visitar, "upgradar": upgradar, "amizade": verificar_amizade(logado, visitar)})
 
         return JsonResponse(data = {"message": MensagemErro})
     else:
@@ -254,3 +257,61 @@ def mostrar_meus_posts(response):
         sla.append(posts.id)
         lista.append(sla)
     return render(response, IrParaListarPostagens, {'lista': lista})
+
+# Amizade
+def verificar_amizade(logado, visita):
+#    Retorna:
+#        1 se eles são amigos
+#        2 se existe um pedido de amizade do logado para o user que ele está visitando
+#        3 se existe um pedido de amizade do user que o usuário logado está visitando para ele
+#        0 caso não exista nada
+    if Amizade.objects.filter(amigo=logado, amigo2=visita).count() == 1 or Amizade.objects.filter(amigo=visita, amigo2=logado).count() == 1:
+        return 1
+    elif ConviteAmizade.objects.filter(quem_enviou=logado, quem_recebeu_o_pedido=visita).count() == 1:
+        return 2
+    elif ConviteAmizade.objects.filter(quem_enviou=visita, quem_recebeu_o_pedido=logado).count() == 1:
+        return 3
+    else:
+        return 0
+
+def adicionar_amigo(response):
+    logado = User.objects.get(id = response.session['id_user'])
+    visita = User.objects.get(id = response.session['id_visita'])
+    upgradar = ["Comum", '[criar novo cargo]',"Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
+    if response.method == "POST":
+        if "adicionar" in response.POST: # verifica se foi pressionado o botão de adicionar amigo
+            ConviteAmizade.objects.create(quem_enviou=logado, quem_recebeu_o_pedido=visita).save() # cria a amizade
+        if "excluir" in response.POST:
+            if Amizade.objects.filter(amigo=logado, amigo2=visita).count() == 1:
+                Amizade.objects.get(amigo=logado, amigo2=visita).delete()
+            else:
+                Amizade.objects.get(amigo=visita, amigo2=logado).delete()
+        elif "cancelar" in response.POST:
+            ConviteAmizade.objects.get(quem_enviou=logado, quem_recebeu_o_pedido=visita).delete()
+        elif "aceitar" in response.POST:
+            ConviteAmizade.objects.get(quem_enviou=visita, quem_recebeu_o_pedido=logado).delete()
+            Amizade.objects.create(amigo=logado, amigo2=visita).save()
+        elif "recusar" in response.POST:
+            ConviteAmizade.objects.get(quem_enviou=visita, quem_recebeu_o_pedido=logado).delete()
+        return render(response, IrParaVisita, {"user":logado, "visita":visita, "upgradar": upgradar, "amizade": verificar_amizade(logado, visita)})
+    return JsonResponse(data = {"message": MensagemErro})
+
+def ver_pedidos_de_amizade(response):
+    logado = User.objects.get(id = response.session['id_user'])
+    upgradar = ["Comum", '[criar novo cargo]',"Tutor", "Moderador", "Administrador"] # Lista para os botões de upgrade
+    if response.method == "POST":
+        # Para chegar aqui ele precisa primeiro ver a lista de amizades, logo, para poupar tempo, verificamos se existe apenas os id's dos users que o pediram em amizade:
+        for i in ConviteAmizade.objects.filter(quem_recebeu_o_pedido=logado):
+            if str(i.quem_enviou.id) in response.POST:
+                response.session['id_visita'] = i.quem_enviou.id
+                return render(response, IrParaVisita, {"user":logado, "visita":i.quem_enviou, "upgradar": upgradar, "amizade": verificar_amizade(logado, i.quem_enviou)})
+    else:
+        # Lista guarda o nome da pessoa que enviou o convite e o id dela, respectivamente
+        lista = []
+        for i in ConviteAmizade.objects.filter(quem_recebeu_o_pedido=logado):
+            sla = []
+            sla.append(i.quem_enviou.nome)
+            sla.append(i.quem_enviou.id)
+            lista.append(sla)
+        return render(response, pedidos_amizade, {"pedidos": lista})
+    return JsonResponse(data = {"message": "asdasdas"})
