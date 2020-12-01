@@ -39,4 +39,6 @@ urlpatterns = [
     path('criarReviews/', views_reviews.criar_nova_review),
     path('listarOutrosReviews/', views_reviews.mostrar_reviews_visita),
 
+    path('adicionandoAmigo/', views_user.adicionar_amigo),
+
 ]
