@@ -1,0 +1,9 @@
+<form method="post" action="/GamingTrack/apagarOuEditarComentarioReview/">
+    {% csrf_token %}
+    <!-- Necessário sempre que usar um form -->
+    
+    <input type="text" value="{{comentario.comentario}}" name="comment">
+
+    <button type="submit", name="save">salvar</button>
+    <button type="submit", name="apagar">Apagar</button>
+</form>

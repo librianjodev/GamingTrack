@@ -8,7 +8,7 @@
     <thead>
     </thead>
     <tbody>
-        <form method="POST" action="/GamingTrack/listarPostagens/">
+        <form method="POST" action="/GamingTrack/listarReviews/">
             {% csrf_token %}
             <tr>
                 <input type="text" name="comentario">
@@ -21,13 +21,13 @@
                     <th>{{str.0}}</th> <!-- nome de quem fez o comentário -->
                     <th>{{str.1}}</th> <!-- comentário do usuário -->
                     {%if user.id == str.3%}
-                    <form method="POST" action="/GamingTrack/apagarOuEditarComentarioPostagem/">
+                    <form method="POST" action="/GamingTrack/apagarOuEditarComentarioReview/">
                         {% csrf_token %}
                         <button type="submit" name={{str.2}}>Ver comentario</button>
                     </form>
                     {%endif%}
                     {%if user.permissionlevel >= 3 or user.id == str.4 or user.id == str.3%}
-                    <form method="POST" action="/GamingTrack/admOuCriadorApagaComentarioEmPost/">
+                    <form method="POST" action="/GamingTrack/admOuCriadorApagaComentarioEmReview/">
                         {% csrf_token %}
                         <button type="submit" name={{str.2}}>Apagar comentario</button>
                     </form>
