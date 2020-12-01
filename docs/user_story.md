@@ -91,10 +91,62 @@ O presente documento tem como finalidade descrever como serão as interações d
 |                    |      |
 | ------------------ | ---- |
 |**Descrição**| O sistema devera permitir que o usuário faça comentários em Postagens |
-|**Requisitos envolvidos**| RF008, RF010, RF012, RF014, RF015, RF027 |
+|**Requisitos envolvidos**| RF010, RF013, RF014, RF015, RF016, RF025, RF027 |
 |**Prioridade**| Importante |
 |**Estimativa**| 5h |
 |**Tempo Gasto (real):**| 4h |
+|**Tamanho Funcional**| -- |
+
+**********
+
+### User Story US07 - Manter Comentários de Reviews de games
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema devera permitir que o usuário faça comentários em Reviews de games |
+|**Requisitos envolvidos**| RF008, RF011, RF012, RF015, RF016, RF026, RF027 |
+|**Prioridade**| Importante |
+|**Estimativa**| 5h |
+|**Tempo Gasto (real):**| -- |
+|**Tamanho Funcional**| -- |
+
+**********
+
+### User Story US08 - Manter Amizades
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema devera permitir que um usuário faça amigos |
+|**Requisitos envolvidos**| RF017, RF018, RF019, RF020 |
+|**Prioridade**| Importante |
+|**Estimativa**| 8h |
+|**Tempo Gasto (real):**| -- |
+|**Tamanho Funcional**| -- |
+
+**********
+
+### User Story US09 - Manter Gostar
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema devera permitir que um usuário goste de uma postagem, uma Review ou um comentário |
+|**Requisitos envolvidos**| RF021, RF027 |
+|**Prioridade**| Importante |
+|**Estimativa**| 5h |
+|**Tempo Gasto (real):**| -- |
+|**Tamanho Funcional**| -- |
+
+**********
+
+### User Story US10 - Manter Páginas de jogos
+
+|                    |      |
+| ------------------ | ---- |
+|**Descrição**| O sistema devera mostrar jogos através da api externa |
+|**Requisitos envolvidos**| RF022, RF023 |
+|**Prioridade**| Importante |
+|**Estimativa**| 5h |
+|**Tempo Gasto (real):**| -- |
 |**Tamanho Funcional**| -- |
 
 **********
@@ -108,6 +160,7 @@ O presente documento tem como finalidade descrever como serão as interações d
 | 22/10/2020 | 1.2 | Detalhamento da US02 - Conectar com APIs externas; US04 - Fazer uma review de um game. | José Geraldo de Medeiros Júnior |
 | 24/10/2020 | 1.3 | Detalhamento da US04 - Permitir a Modificação de Postagens; US06 - Permitir a pesquisa; US07 - Atrubuir poderes.| Pedro Jonas da Silva Medeiros |
 | 14/11/2020 | 1.4 | Detalhamento da US06 - Manter Comentários; US07 agora é US04; US04 e US06 deletados; modificação de nome dos US US03 e US05 para, respectivamente, Manter Postagens e Manter Resenhas; alterado detalhamento de US03 e US05. | Pedro Jonas da Silva Medeiros |
+| 23/11/2020 | 1.5 | Detalhamento da US07 - Manter Comentários de Reviews de games, US08 - Manter Amizades, US09 - Manter Gostar e US10 - Manter Páginas de jogos. | Pedro Jonas da Silva Medeiros |
 
 
 **********

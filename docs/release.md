@@ -11,7 +11,7 @@ It2      | 27/09/2020  | 10/10/2020 | 09/10/2020   | Paulo Vítor | Implementar 
 It3      | 11/10/2020  | 24/10/2020 | 23/10/2020   | Geraldo | Implementar US01, US03, Detalhar US02, US04, Testar US00.
 It4      | 25/10/2020  | 07/11/2020 | 06/11/2020   | Geraldo | Implementar US02, US04, detalhar os US restante, corrigir os erros do US00 e testar o US01 e US03.
 It5      | 08/11/2020  | 21/11/2020 | 20/11/2020   | Pedro Jonas | Implementar US05, US06 e US02. Fazer a Análise de PF detalhada.
-It6      | 22/11/2020  | 05/12/2020 | 04/12/2020   | Pedro Jonas |
+It6      | 22/11/2020  | 05/12/2020 | 04/12/2020   | Pedro Jonas | Iplementar US07, US08, US09 e US10. Finalizar o projeto
 
 * Observação 1: Cada Iteração de ser cadastrada como Milestones no GitHub.
 * Observação 2: Use este repositório como Modelo.
