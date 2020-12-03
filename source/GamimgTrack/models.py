@@ -55,7 +55,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     nome = models.CharField(_('Nome completo'), max_length=255, null=True)
     email = models.EmailField(_('E-mail válido'), max_length=255, unique=True)
     photo = models.BinaryField(blank=True, null=True)
-    password = models.CharField(_('Senha'), max_length=128, unique_for_month=True)
+    password = models.CharField(_('Senha'), max_length=128)
     last_login = models.DateTimeField(
         _('Último login'),
         db_column='lastLogin',
@@ -65,9 +65,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     creationdate = models.DateTimeField(
         _('Data de criação'),
         db_column='creationDate',
-        blank=True,
-        null=True,
-        default=timezone.now
+        auto_now_add=True
     )
     permissionlevel = models.IntegerField(
         _('Permissões: 1 = normal_user, 2 = ?, 3 = tutor, 4 = moderator, 5 = administrador'),
