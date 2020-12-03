@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import LikePostagens, Postagem, User, Game, ComentariosPostagens
+from .models import LikePostagens, Postagem, User, Game, ComentariosPostagens, Review
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -20,6 +20,8 @@ class UserSerializer(serializers.ModelSerializer):
             'creationdate',
             'last_login',
             'permissionlevel',
+            'is_staff',
+            'is_superuser',
         )
 
 
@@ -63,7 +65,7 @@ class GameSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Game
+        model = Review
         fields = (
             'id',
             'likes',
