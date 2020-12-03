@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #'rest_framework.authtoken',
 
     'GamimgTrack',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,15 @@ REST_FRAMEWORK = {
     ],
 
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:1",
+    "http://192.169.1.3:3000",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:1",
+    "http://192.169.1.3:3000",
+]

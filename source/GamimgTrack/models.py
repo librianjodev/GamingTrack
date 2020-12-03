@@ -141,13 +141,6 @@ class LikePostagens(models.Model):
         return self.user_like
 
 
-class ComentariosPostagens(models.Model):
-    id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE)
-    comentario = models.TextField(default="")
-
-
 class Game(models.Model):
     id = models.AutoField(primary_key=True)
     relative_image = models.BinaryField(blank=True, null=True)
@@ -172,3 +165,30 @@ class Review(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ComentariosPostagens(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE)
+    comentario = models.TextField(default="")
+
+class ComentariosReview(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    comentario = models.TextField(default="")
+
+class Amizade(models.Model):
+    id = models.AutoField(primary_key=True)
+    amigo = models.ForeignKey(User, related_name='amigo', on_delete=models.CASCADE)
+    amigo2 = models.ForeignKey(User, related_name='amigo2', on_delete=models.CASCADE)
+    class Meta:
+        unique_together = ['amigo', 'amigo2']
+
+class ConviteAmizade(models.Model):
+    id = models.AutoField(primary_key=True)
+    quem_enviou = models.ForeignKey(User, related_name='enviou',on_delete=models.CASCADE)
+    quem_recebeu_o_pedido = models.ForeignKey(User, related_name='recebeu', on_delete=models.CASCADE)
+    class Meta:
+        unique_together = ['quem_enviou', 'quem_recebeu_o_pedido']

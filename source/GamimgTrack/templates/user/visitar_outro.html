@@ -1,6 +1,4 @@
 
-{% block title %}  {% endblock %}
-
 {% block content %}
 <body>
     <table>
@@ -37,6 +35,27 @@
                 <th>{{visita.lastlogin}}</th>
                 <button onclick="location.href = '/GamingTrack/apagarConta'">Apagar conta</button>
             {% endif %}
+            <form method="POST" action="/GamingTrack/adicionandoAmigo/">
+                {% csrf_token %}
+            <!--
+                amizade
+                1 eles são amigos
+                2 existe um pedido de amizade do logado para o user que ele está visitando
+                3 existe um pedido de amizade do user que o usuário logado está visitando para ele
+                0 caso não exista nada
+            -->
+            {% if amizade == 0%}
+            <button type="submit" name="adicionar">Adicionar amigo</button>
+            {% elif amizade == 1%}
+            <button type="submit" name="excluir">Excluir amigo</button>
+            {% elif amizade == 2%}
+            <p>Você já enviou um pedido de amizade para este usuário</p>
+            <button type="submit" name="cancelar">Cancelar pedido</button>
+            {% elif amizade == 3%}
+            <button type="submit" name="aceitar">Aceitar pedido</button>
+            <button type="submit" name="recusar">Recusar pedido</button>
+            {%endif%}
+            </form>
             <a href="/GamingTrack/outrosPosts">Ver postagens</a>
         </tr>
     

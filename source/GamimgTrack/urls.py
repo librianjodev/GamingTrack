@@ -31,10 +31,15 @@ urlpatterns = [
     path('outrosPosts/', views_postagens.mostrar_posts_visita),
     path('criarNovaPostagem/', views_postagens.criar_nova_postagem),
     path('apagarOuEditarComentarioPostagem/', views_comentarios.editar_apagar_comentario_postagem),
+    path('apagarOuEditarComentarioReview/', views_comentarios.editar_apagar_comentario_review),
     path('admOuCriadorApagaComentarioEmPost/', views_comentarios.adm_ou_criador_apaga_comentario_em_post),
+    path('admOuCriadorApagaComentarioEmReview/', views_comentarios.adm_ou_criador_apaga_comentario_em_review),
 
     path('listarReviews/', views_reviews.listar_review),
     path('criarReviews/', views_reviews.criar_nova_review),
     path('listarOutrosReviews/', views_reviews.mostrar_reviews_visita),
+
+    path('adicionandoAmigo/', views_user.adicionar_amigo),
+    path('verPedidosdeAmizade/', views_user.ver_pedidos_de_amizade),
 
 ]
